@@ -75,17 +75,19 @@
 	#container
 	{
 		height: 100%;
+		background: #efefed;
 	}
 
 	body
 	{
-		background: #efefed;
-
 		font-size: 100%;
 		line-height: 1.2em;
 
 		-webkit-text-size-adjust: 100%;
-		-webkit-overflow-scrolling: touch;
+
+		-webkit-perspective: 800;
+		-moz-perspective: 800;
+		perspective: 800;
 	}
 
 
@@ -132,18 +134,20 @@
 	#nav, #nav button
 	{
 		width: 100%;
-		height: 54px;
+		height: 74px;
 	}
 
 	#nav
 	{
 		position: absolute;
+		z-index: 1;
 		left: 0;
 		top: 0;
 	}
 
 	#nav button
 	{
+		position: relative;
 		display: block;
 
 		margin: 0;
@@ -151,12 +155,10 @@
 
 		border: 0;
 
-		background: url('../img/menu.png') no-repeat;
-		background: rgba(0, 0, 0, 0) url('../img/menu.svg') no-repeat;
-		background-position: 32px 18px;
-
 		text-indent: -10000px;
 		cursor: pointer;
+
+		background: transparent;
 
 		-webkit-appearance: none;
 		-moz-appearance: none;
@@ -166,6 +168,23 @@
 		-moz-transition: background-color 600ms;
 		-o-transition: background-color 600ms;
 		transition: background-color 600ms;
+	}
+
+	#nav button span
+	{
+		position: absolute;
+		top: 50%;
+
+		display: block;
+		
+		width: 24px;
+		height: 24px;
+		
+		margin: -12px 0 0 0;
+
+		background: url('../img/menu.png') no-repeat;
+		background: rgba(0, 0, 0, 0) url('../img/menu.svg') no-repeat;
+		background-position: -24px 0;
 	}
 
 	#nav button:hover
@@ -191,8 +210,26 @@
 			height: 100%;
 		}
 
-		#nav button
+		#nav button span
 		{
-			background-position: 50% 50%;
+			left: 50%;
+			margin-left: -12px;
 		}
 	}
+
+
+/*
+	Navigation, toggled state
+	----------------------------------- */
+
+	#nav.toggle button span			{ background-position: -24px -48px; }
+	#nav.toggle button:hover		{ background-color: rgba(133, 150, 160, 0.25); }
+
+	#nav.toggle + #container		{ background: #333; }
+	#nav.toggle + #container #logo	{ background-position: 0 -244px; }
+
+	/*#nav.toggle button span			{ background-position: -24px -24px; }
+	#nav.toggle button:hover		{ background-color: rgba(204, 238, 255, 0.25); }
+
+	#nav.toggle + #container		{ background: #93b5cc; }
+	#nav.toggle + #container #logo	{ background-position: 0 -122px; }*/

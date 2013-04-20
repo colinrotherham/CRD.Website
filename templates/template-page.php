@@ -22,13 +22,15 @@
 	</head>
 	<body class="<?= $html->entities($this->name) ?>">
 
+<?= $this->content('navigation') ?>
+
 		<div id="container">
-<?= $this->content('intro') ?>
 <?= $this->content('main') ?>
 		</div>
 		
 		<!-- Script includes -->
 		<script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+		<script src="/assets/js/launcher.js?cache=<?= urlencode($app->version) ?>"></script>
 		
 		<!-- Google Analytics -->
 		<script>

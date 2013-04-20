@@ -1,5 +1,5 @@
 			<div id="nav">
-				<button>Menu</button>
+				<button>Menu <span>+</span></button>
 				
 				<ul>
 					<li><a href="#">Item 1</a></li>
