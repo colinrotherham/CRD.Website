@@ -1,10 +1,10 @@
-<?php
-	// Start placeholder
+<?
+	$this->template->title = 'Interaction design and web development';
+
+	$this->template->placeHolderPartial('intro', 'navigation');
 	$this->template->placeHolder('main');
 ?>
-			<h1>Home</h1>
-			<p>Hello</p>
-<?php
-	// End placeholder
+			<a id="logo">Colin Rotherham. Interaction Designer</a>
+<?
 	$this->template->placeHolderEnd();
 ?>

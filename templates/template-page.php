@@ -1,4 +1,4 @@
-<?php
+<?
 	namespace CRD\Core;
 
 	$resources = $this->resources;
@@ -23,8 +23,8 @@
 	<body class="<?= $html->entities($this->name) ?>">
 
 		<div id="container">
+<?= $this->content('intro') ?>
 <?= $this->content('main') ?>
-<?= $this->content('footer') ?>
 		</div>
 		
 		<!-- Script includes -->
