@@ -4,7 +4,14 @@
 	$this->template->placeHolderPartial('navigation', 'navigation');
 	$this->template->placeHolder('main');
 ?>
-			<a id="logo">Colin Rotherham. Interaction Designer</a>
+			<h1>Colin Rotherham. Interaction Designer</h1>
+
+			<div id="message">
+				<h2>Get in touch</h2>
+
+				<p>Telephone: 07792 348187<br>
+				Email: <a id="email">#####@colinr.com</a></p>
+			</div>
 <?
 	$this->template->placeHolderEnd();
 ?>

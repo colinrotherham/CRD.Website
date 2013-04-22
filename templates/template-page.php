@@ -18,7 +18,7 @@
 		<link href="/assets/css/base.css?cache=<?= urlencode($app->version) ?>" rel="stylesheet" media="all">
 		
 		<!-- Initialise advanced UI -->
-		<script>document.documentElement.className = 'advanced';</script>
+		<script>document.documentElement.className = 'advanced wf-loading';</script>
 	</head>
 	<body class="<?= $html->entities($this->name) ?>">
 
@@ -29,7 +29,6 @@
 		</div>
 		
 		<!-- Script includes -->
-		<script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
 		<script src="/assets/js/launcher.js?cache=<?= urlencode($app->version) ?>"></script>
 		
 		<!-- Google Analytics -->
