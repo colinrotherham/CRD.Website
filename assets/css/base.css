@@ -228,7 +228,7 @@
 		}
 	}
 
-	@media (min-width: 35em) and (min-height: 20.625em)
+	@media (min-width: 35.5em) and (min-height: 20.625em)
 	{
 		h1
 		{
@@ -333,7 +333,7 @@
 		}
 	}
 
-	@media (min-width: 35em)
+	@media (min-width: 35.5em)
 	{
 		#nav, #nav button
 		{
@@ -421,7 +421,7 @@
 		transform: translateY(0);
 	}
 
-	@media (min-width: 35em)
+	@media (min-width: 35.5em)
 	{
 		#message
 		{
