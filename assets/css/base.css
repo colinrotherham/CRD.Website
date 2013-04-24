@@ -129,16 +129,16 @@
 
 		text-decoration: none;
 
-		-webkit-transition-duration: 600ms;
-		-moz-transition-duration: 600ms;
-		transition-duration: 600ms;
+		-webkit-transition: background-color 600ms ease-in-out;
+		-moz-transition: background-color 600ms ease-in-out;
+		transition: background-color 600ms ease-in-out;
 	}
 	
 	a:hover,
 	a:focus
 	{
 		background: rgba(154, 174, 183, 0.2);
-
+		
 		-webkit-transition-duration: 300ms;
 		-moz-transition-duration: 300ms;
 		transition-duration: 300ms;
@@ -156,9 +156,9 @@
 		display: block;
 		opacity: 0;
 
-		-webkit-transition: 600ms;
-		-moz-transition: 600ms;
-		transition: 600ms;
+		-webkit-transition: opacity 600ms, -webkit-transform 600ms;
+		-moz-transition: opacity 600ms, -moz-transform 600ms;
+		transition: opacity 600ms, transform 600ms;
 
 		-webkit-perspective: 1000;
 		-webkit-backface-visibility: hidden;
@@ -169,7 +169,11 @@
 	.advanced.wf-active #container
 	{
 		opacity: 1;
-
+	}
+	
+	.advanced.wf-active #nav,
+	.advanced.wf-active #container
+	{
 		-webkit-transition-duration: 300ms;
 		-moz-transition-duration: 300ms;
 		transition-duration: 300ms;
@@ -193,10 +197,6 @@
 		background: url('../img/logo.png') no-repeat;
 		background: rgba(0, 0, 0, 0) url('../img/logo.svg') no-repeat;
 		text-indent: -10000px;
-
-		-webkit-transition-property: webkit-transform, opacity;
-		-moz-transition-property: moz-transform, opacity;
-		transition-property: transform, opacity;
 
 		-webkit-perspective: 1000;
 		-webkit-backface-visibility: hidden;
@@ -388,10 +388,10 @@
 		border-radius: 3px;
 		box-shadow: 0 0 30px 0 rgba(118, 134, 142, 0.1);
 		outline: none;
-
-		-webkit-transition: 300ms ease-in-out;
-		-moz-transition: 300ms ease-in-out;
-		transition: 300ms ease-in-out;
+		
+		-webkit-transition: opacity 300ms ease-in-out, -webkit-transform 300ms ease-in-out;
+		-moz-transition: opacity 300ms ease-in-out, -moz-transform 300ms ease-in-out;
+		transition: opacity 300ms ease-in-out, transform 300ms ease-in-out;
 
 		-webkit-perspective: 1000;
 		-webkit-backface-visibility: hidden;
