@@ -23,25 +23,32 @@
 	// Website namespace
 	CRD.website = {};
 
-	(function(self)
+	(function(namespace)
 	{
+		'use strict';
+
 		// Navigation menu
-		self.Menu = function(menu, container, focus)
+		namespace.Menu = function(menu, container, focus)
 		{
+			var self = this;
+		
 			function open()
 			{
 				container.addClass(classToggle);
-			
-				// Focus after animation
-				setTimeout(function() { focus.attr('tabindex', '-1').focus(); }, 300);
+
+				// Focus email after animation
+				setTimeout(function() { focus.removeAttr('tabindex').focus(); }, 300);
 			}
 			
 			function close(event)
 			{
 				if (event && event.which && event.which !== 27) return;
 
+				// Stop email receiving focus until ready
+				focus.attr('tabindex', '-1');
+
 				container.removeClass(classToggle);
-				button.attr('tabindex', '-1').focus();
+				if (event) button.focus();
 			}
 		
 			function toggle(event)
@@ -55,14 +62,14 @@
 			var classToggle = 'toggle';
 			var button = menu.children('button');
 
-			// Toggle when clicked
+			// Toggle when clicked, listen for escape key
 			button.on('click touchend', toggle);
-
-			// Listen for escape key
 			$(document).on('keyup', close);
+
+			close();
 		};
 
-		self.hasTransitions = (function()
+		namespace.hasTransitions = (function()
 		{
 			// Transition prefixes + default
 			var prefixes = ['ms', 'O', 'Moz', 'Webkit', ''], prefix = prefixes[prefixes.length],
@@ -77,7 +84,7 @@
 			return hasTransitions;
 		})();
 
-		self.EmailUnscramble = function(email, scrambled)
+		namespace.EmailUnscramble = function(email, scrambled)
 		{
 			// Unscramble email
 			var unscrambled = CRD.email.unscramble(scrambled);
@@ -92,8 +99,13 @@
 		// Inject dependencies + init
 		head.js('/assets/js/jquery-1.9.1.min.js', function()
 		{
-			new self.Menu($('#nav'), $('#container'), $('#contact'));
-			new self.EmailUnscramble($('#email'), [101, 211, 223, 230, 222, 219, 219, 206, 216, 179, 163, 210, 219, 213, 215, 224, 160, 145, 210, 220]);
+			var nav = $('#nav'),
+				container = $('#container'),
+				email = $('#email');
+
+			// Ready… steady… go…
+			new namespace.Menu(nav, container, email);
+			new namespace.EmailUnscramble(email, [101, 211, 223, 230, 222, 219, 219, 206, 216, 179, 163, 210, 219, 213, 215, 224, 160, 145, 210, 220]);
 		});
 
 	})(CRD.website);
