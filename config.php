@@ -16,7 +16,7 @@
 	$app->name = 'Colin Rotherham Design';
 	
 	// Set app version string
-	$app->version = '1.0';
+	$app->version = '1.1';
 
 	// Page templates
 	$app->templates = array
