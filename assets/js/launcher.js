@@ -35,9 +35,6 @@
 			function open()
 			{
 				container.addClass(classToggle);
-
-				// Focus email after animation
-				setTimeout(function() { focus.removeAttr('tabindex').focus(); }, 300);
 			}
 			
 			function close(event)
