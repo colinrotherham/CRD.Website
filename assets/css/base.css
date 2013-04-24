@@ -76,13 +76,13 @@
 	#container
 	{
 		height: 100%;
+		overflow: hidden;
+
 		background: #efefed;
 	}
 
 	body
-	{
-		overflow: hidden;
-	
+	{	
 		font: 100% 'adelle-sans', Helvetica, Arial, sans-serif;
 
 		line-height: 16px;
@@ -151,7 +151,8 @@
 
 	.advanced h1,
 	.advanced #nav,
-	.advanced #container
+	.advanced #container,
+	.advanced #message
 	{
 		display: block;
 		opacity: 0;
@@ -172,7 +173,8 @@
 	}
 	
 	.advanced.wf-active #nav,
-	.advanced.wf-active #container
+	.advanced.wf-active #container,
+	.advanced.wf-active #message
 	{
 		-webkit-transition-duration: 300ms;
 		-moz-transition-duration: 300ms;
@@ -215,7 +217,7 @@
 		}
 	}
 
-	@media (min-height: 22.5em)
+	@media (min-height: 20em)
 	{
 		h1
 		{
@@ -388,31 +390,26 @@
 		border-radius: 3px;
 		box-shadow: 0 0 30px 0 rgba(118, 134, 142, 0.1);
 		outline: none;
-		
-		-webkit-transition: opacity 300ms ease-in-out, -webkit-transform 300ms ease-in-out;
-		-moz-transition: opacity 300ms ease-in-out, -moz-transform 300ms ease-in-out;
-		transition: opacity 300ms ease-in-out, transform 300ms ease-in-out;
 
-		-webkit-perspective: 1000;
-		-webkit-backface-visibility: hidden;
-	}
-
-	.advanced #message
-	{
-		opacity: 0;
-
-		-webkit-transform: translateY(200px);
-		-moz-transform: translateY(200px);
-		transform: translateY(200px);
+		-webkit-transition-timing-function: ease-in-out;
+		-moz-transition-timing-function: ease-in-out;
+		transition-timing-function: ease-in-out;
 	}
 
 	.wf-loading #message
 	{
 		display: none;
 	}
+	
+	.transitions #message
+	{
+		-webkit-transform: translateY(200px);
+		-moz-transform: translateY(200px);
+		transform: translateY(200px);
+	}
 
 	#container.toggle #message,
-	.page-error #message
+	body.page-error #message
 	{
 		opacity: 1;
 	
