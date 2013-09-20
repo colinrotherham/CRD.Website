@@ -12,13 +12,13 @@
 	// Home
 	$app->router->add('/', array('view-home'), function($view)
 	{
-		$view->template = new Template($view, 'page', 'page-home');
+		$view->template = new Template($view, 'template-page', 'page-home');
 	});
 
 	// 404 route
 	$app->router->add(':404:', array('view-error-404'), function($view)
 	{
-		$view->template = new Template($view, 'page', 'page-error');
+		$view->template = new Template($view, 'template-page', 'page-error');
 	});
 
 	// Check request matches a route

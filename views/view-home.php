@@ -1,8 +1,10 @@
 <?
-	$this->template->title = 'Interaction design and web development';
+	$template = $view->template;
 
-	$this->template->placeHolderPartial('navigation', 'navigation');
-	$this->template->placeHolder('main');
+	$template->title = 'Interaction design and web development';
+
+	$template->placeHolderPartial('navigation', 'navigation');
+	$template->placeHolder('main');
 ?>
 			<h1>Colin Rotherham. Interaction Designer</h1>
 
@@ -11,7 +13,9 @@
 
 				<p>Telephone: 07792 348187<br>
 				Email: <a id="email">#####@colinr.com</a></p>
+				<p>Twitter: <a href="https://twitter.com/colinrotherham">@colinrotherham</a><br>
+				GitHub: <a href="https://github.com/colinrotherham">@colinrotherham</a></p>
 			</div>
 <?
-	$this->template->placeHolderEnd();
+	$template->placeHolderEnd();
 ?>

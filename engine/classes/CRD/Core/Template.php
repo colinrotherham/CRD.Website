@@ -9,48 +9,66 @@
 
 	class Template
 	{
+		public $app;
+	
 		public $view;
 		public $path;
-	
-		public $name = '';
+
+		public $page = '';
 		public $title = '';
 		public $meta = '';
 		public $canonical = '';
 
-		// Template and current placeholder
-		private $template = '';
+		// Template name and current placeholder
+		private $name = '';
 		private $placeholder = '';
+
+		// Store this template's PHP file name
+		private $template;
 
 		// Array of content by placeholder name
 		private $buffer = array();
 
 		// Other helpers
+		public $cache;
 		public $html;
+		public $file;
 		public $resources;
 
-		public function __construct($view, $template, $name = '')
+		public function __construct($view, $name, $page = '')
 		{
 			$this->view = $view;
-			$this->template = $template;
 			$this->name = $name;
+			$this->page = $page;
 
-			// For template includes, pull path from app
-			$this->path = $view->app->path;
+			if (empty($this->view))
+				throw new \Exception("Creating template: Missing view name");
+
+			// Pull app and cache helper from view
+			$this->app = $this->view->app;
+			$this->cache = $this->app->cache;
+
+			if (empty($this->name))
+				throw new \Exception("Creating template: Missing template name");
+
+			else if (!file_exists($this->location()))
+				throw new \Exception('Checking template: Missing template file');
+
+			// Store template for later
+			$this->template = $this->location();
 
 			// Other helpers
 			$this->html = new HTML($this);
+			$this->file = new File($this->cache, $this);
 			$this->resources = new Resources($this, $this->view->app->path);
 		}
 		
 		public function __destruct()
 		{
-			if (isset($this->view->templates[$this->template]))
-				$this->render();
-
-			else throw new \Exception("Missing template: '{$this->template}'");
+			$this->render();
 		}
 		
-		public function placeHolder($name, $content = null, $partial = null)
+		public function placeHolder($name, $content = null, $partial = null, $partial_shared = null)
 		{
 			$this->placeholder = $name;
 			$this->buffer[$this->placeholder] = '';
@@ -70,12 +88,10 @@
 			if (!empty($partial))
 			{
 				// Partial exists in config?
-				if (isset($this->view->partials[$partial]))
+				if (file_exists($this->location($partial, true)))
 				{
 					// Insert partial content into buffer
-					require_once ($this->path . '/' . $this->view->partials[$partial]);
-
-					// End placeholder, i.e. close buffer
+					$this->contentPartial($partial, $partial_shared);
 					$this->placeHolderEnd();
 				}
 				
@@ -96,15 +112,16 @@
 			}
 		}
 		
-		public function placeHolderPartial($name, $partial)
+		public function placeHolderPartial($name, $partial, $shared = null)
 		{
-			$this->placeHolder($name, null, $partial);
+			$this->placeHolder($name, null, $partial, $shared);
 		}
 		
 		public function contentPartial($partial, $shared = null)
 		{
-			// Inject content
-			require_once ($this->path . '/' . $this->view->partials[$partial]);
+			// Inject file, from cache if possible
+			$context = (!empty($shared))? (object) array('name' => 'shared', 'scope' => $shared) : null;
+			$this->file->inject($this->location($partial, true), 'partial-' . $partial, $context);
 		}
 		
 		public function content($name, $return = false)
@@ -115,33 +132,22 @@
 			else return $content;
 		}
 
+		public function location($name = '', $is_partial = false)
+		{
+			if (empty($name))
+				$name = $this->name;
+		
+			return $this->app->path . (($is_partial)? '/views/partials/' : '/templates/') . $name . '.php';
+		}
+
 		public function render()
 		{
 			if (!empty($this->placeholder))
-			{
 				$this->placeHolderEnd();
-			}
 
-			// Pull template from cache, save disk IO
-			$template_content = $this->view->cache->get('template-' . $this->template);
-
-			// Include file if not cached
-			if (!$template_content)
-			{
-				$template_file = $this->path . '/' . $this->view->templates[$this->template];
-
-				// Attempt to cache
-				$this->view->cache->set('template-' . $this->template, file_get_contents($template_file));
-			
-				// Load the template
-				require_once ($template_file);
-			}
-			
-			// Output from cache and run as PHP
-			else
-			{
-				eval('?>' . $template_content);
-			}
+			// Inject file, from cache if possible
+			$context = (object) array('name' => 'template', 'scope' => $this);
+			$this->file->inject($this->template, 'template-' . $this->name, $context);
 		}
 	}
 ?>

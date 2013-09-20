@@ -1,5 +1,7 @@
 <?
-	$this->template->placeHolder('main');
+	$template = $view->template;
+
+	$template->placeHolder('main');
 ?>
 			<h1>Colin Rotherham. Interaction Designer</h1>
 
@@ -10,5 +12,5 @@
 			</div>
 <?
 	// End placeholder
-	$this->template->placeHolderEnd();
+	$template->placeHolderEnd();
 ?>

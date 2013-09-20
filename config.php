@@ -16,17 +16,5 @@
 	$app->name = 'Colin Rotherham Design';
 	
 	// Set app version string
-	$app->version = '1.1';
-
-	// Page templates
-	$app->templates = array
-	(
-		'page'			=> '/templates/template-page.php'
-	);
-	
-	// Page partials
-	$app->partials = array
-	(
-		'navigation'	=> '/views/partials/navigation.php'
-	);
+	$app->version = '1.2';
 ?>
