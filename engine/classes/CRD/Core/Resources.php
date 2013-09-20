@@ -9,8 +9,6 @@
 
 	class Resources
 	{
-		private $template;
-
 		public $locale = '';
 		public $locale_default = 'en-GB';
 
@@ -22,15 +20,20 @@
 		public $resource_default = array();
 
 		// Other helpers
+		private $cache;
+		private $helper;
 		private $file;
 
-		public function __construct($template, $path)
+		public function __construct($template, $cache)
 		{
-			$this->template = $template;
-			$this->file = new File($template->cache, $template);
+			$this->helper = $template->html;
+			$this->file = new File($cache, $template);
+
+			// Grab all resource files
+			$resources = glob($template->path . '/resources/*.php');
 
 			// Loop resource filenames
-			foreach (glob($path . '/resources/*.php') as $file)
+			if (!empty($resources)) foreach ($resources as $file)
 			{
 				$info = pathinfo($file);
 				$name = basename($file, '.' . $info['extension']);
@@ -59,7 +62,7 @@
 			if (isset($this->list[$this->locale_default]))
 				$this->resource_default = $this->list[$this->locale_default];
 		}
-		
+
 		// Get text string by key
 		public function get($category, $key)
 		{
@@ -68,11 +71,11 @@
 			{
 				$this->setLocale($this->locale_default);
 			}
-		
+
 			// Grab the locale's resource and category strings
 			$resource = $this->resource;
 			$strings = (array_key_exists($category, $resource))? $resource[$category] : array();
-			
+
 			// Store the final resource string here
 			$string = '';
 
@@ -94,17 +97,17 @@
 				{
 					$string = $strings[$key];
 				}
-				
+
 				// Oh dear, can't find this one
 				else throw new \Exception("Missing '{$key}' resource");
 			}
 
 			return $string;
 		}
-		
+
 		public function html($category, $key, $find_replaces = null)
 		{
-			$resource = $this->template->html->entities($this->get($category, $key));
+			$resource = $this->helper->entities($this->get($category, $key));
 
 			if ($find_replaces) foreach ($find_replaces as $find_replace)
 			{

@@ -8,7 +8,7 @@
 	namespace CRD\Core;
 
 	// Where are we?
-	$path = realpath(getcwd() . '/../');
+	$path = (isset($path))? $path : realpath(getcwd() . '/../');
 
 	// Include class auto-loader
 	require_once ($path . '/engine/classes/SplClassLoader.php');
@@ -19,5 +19,11 @@
 
 	// Include main config + routes
 	require_once ($path . '/config.php');
-	require_once ($path . '/config.routes.php');
+
+	// Init app
+	$app->start();
+
+	// Start web router when not running on CLI
+	if (PHP_SAPI !== 'cli')
+		require_once ($path . '/config.routes.php');
 ?>

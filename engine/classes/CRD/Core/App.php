@@ -10,7 +10,7 @@
 	class App
 	{
 		public $path;
-	
+
 		public $version = '';
 		public $name = '';
 
@@ -29,12 +29,15 @@
 		public function __construct($path)
 		{
 			$this->path = $path;
-		
+
 			$this->credentials = (object) array();
 			$this->queries = (object) array();
+		}
 
-			// Instantiate other helpers + inject app instance
-			$this->cache = new Cache($this, $this->cache_enabled, $this->cache_length);
+		// Instantiate other helpers + inject app instance
+		public function start()
+		{
+			$this->cache = new Cache($this->name, $this->cache_enabled, $this->cache_length);
 			$this->database = new Database($this->credentials);
 			$this->redirect = new Redirect();
 		}
