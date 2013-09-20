@@ -13,8 +13,8 @@
 	$app = new App($path);
 
 	// App name, also cache prefix
-	$app->name = 'Colin Rotherham Design';
-	
+	$app->name = 'Colin Rotherham Design Ltd.';
+
 	// Set app version string
-	$app->version = '1.2';
+	$app->version = '1.3';
 ?>
