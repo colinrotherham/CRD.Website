@@ -94,7 +94,7 @@
 		CRD.typekit.init({ kitId: 'enr8jug' });
 
 		// Inject dependencies + init
-		head.js('/assets/js/jquery-1.9.1.min.js', function()
+		head.js('/assets/js/jquery-1.10.2.min.js', function()
 		{
 			var nav = $('#nav'),
 				container = $('#container'),
