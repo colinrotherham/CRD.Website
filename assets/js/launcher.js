@@ -31,12 +31,12 @@
 		namespace.Menu = function(menu, container, focus)
 		{
 			var self = this;
-		
+
 			function open()
 			{
 				container.addClass(classToggle);
 			}
-			
+
 			function close(event)
 			{
 				if (event && event.which && event.which !== 27) return;
@@ -47,7 +47,7 @@
 				container.removeClass(classToggle);
 				if (event) button.focus();
 			}
-		
+
 			function toggle(event)
 			{
 				event.preventDefault();
