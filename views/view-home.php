@@ -1,4 +1,4 @@
-<?
+<?php
 	$template = $view->template;
 
 	$template->title = 'Interaction design and web development';
@@ -16,6 +16,6 @@
 				<p>Twitter: <a href="https://twitter.com/colinrotherham">@colinrotherham</a><br>
 				GitHub: <a href="https://github.com/colinrotherham">@colinrotherham</a></p>
 			</div>
-<?
+<?php
 	$template->placeHolderEnd();
 ?>
