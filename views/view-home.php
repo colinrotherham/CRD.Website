@@ -13,8 +13,10 @@
 
 				<p>Telephone: 07792 348187<br>
 				Email: <a id="email">#####@colinr.com</a></p>
-				<p>Twitter: <a href="https://twitter.com/colinrotherham">@colinrotherham</a><br>
-				GitHub: <a href="https://github.com/colinrotherham">@colinrotherham</a></p>
+
+				<p><a href="https://twitter.com/colinrotherham">Twitter</a> /
+				<a href="https://github.com/colinrotherham">GitHub</a> /
+				<a href="https://dribbble.com/colinrotherham">Dribbble</a></p>
 			</div>
 <?php
 	$template->placeHolderEnd();
