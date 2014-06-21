@@ -1,5 +1,5 @@
 node_modules
 .sass-cache
 *.sublime-*
-css/*.min.*
-js/*.min.js
+**/css/*.min.*
+**/js/*.min.js
