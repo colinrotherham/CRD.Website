@@ -94,7 +94,7 @@
 		CRD.typekit.init({ kitId: 'enr8jug' });
 
 		// Inject dependencies + init
-		head.js('/assets/js/jquery-1.10.2.min.js', function()
+		head.js('/assets/js/lib/jquery-1.10.2.min.js', function()
 		{
 			var nav = $('#nav'),
 				container = $('#container'),
@@ -106,3 +106,23 @@
 		});
 
 	})(CRD.website);
+
+
+/*
+	Google Analytics
+	----------------------------------- */
+
+	// set up account
+	var _gaq = [['_setAccount', 'UA-2204911-2']];
+
+	// track page view
+	_gaq.push(['_trackPageview']);
+
+	(function()
+	{
+		var ga = document.createElement('script');
+		ga.async = true; ga.src = "//www.google-analytics.com/ga.js";
+
+		var s = document.getElementsByTagName('script')[0];
+		s.parentNode.insertBefore(ga, s);
+	})();

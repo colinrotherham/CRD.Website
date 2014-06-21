@@ -1,10 +1,9 @@
 <?php
-	namespace CRD\Core;
+	global $app, $router;
 
 	$resources = $template->resources;
 	$html = $template->html;
 	$bag = $template->bag;
-	$router = $template->router;
 
 ?><!doctype html>
 <html lang="<?= $html->entities($resources->locale) ?>">
@@ -15,8 +14,8 @@
 		<!-- Handheld support -->
 		<meta name="viewport" content="width=device-width, initial-scale=1">
 
-		<!-- CSS includes -->
-		<link href="/assets/css/base.css?cache=<?= urlencode($bag->version) ?>" rel="stylesheet" media="all">
+		<!-- CSS include -->
+		<style><?php require_once($app->path . '/assets/css/combined.min.css'); ?></style>
 
 		<!-- Initialise advanced UI -->
 		<script>document.documentElement.className = 'advanced wf-loading';</script>
@@ -29,27 +28,7 @@
 <?= $template->content('main') ?>
 		</div>
 
-		<!-- Script includes -->
-		<script src="/assets/js/launcher.js?cache=<?= urlencode($bag->version) ?>"></script>
-
-		<!-- Google Analytics -->
-		<script>
-
-			// set up account
-			var _gaq = [['_setAccount', 'UA-2204911-2']];
-
-			// track page view
-			_gaq.push(['_trackPageview']);
-
-			(function()
-			{
-				var ga = document.createElement('script');
-				ga.async = true; ga.src = "//www.google-analytics.com/ga.js";
-
-				var s = document.getElementsByTagName('script')[0];
-				s.parentNode.insertBefore(ga, s);
-			})();
-
-		</script>
+		<!-- Script include -->
+		<script><?php require_once($app->path . '/assets/js/combined.min.js'); ?></script>
 	</body>
 </html>
