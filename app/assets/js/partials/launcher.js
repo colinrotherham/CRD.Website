@@ -87,8 +87,12 @@
 			email.attr('href', 'mailto:' + unscrambled).html(unscrambled);
 		};
 
-		// Start fonts loading immediately
-		CRD.typekit.init({ kitId: 'enr8jug' });
+		// Inject font stylesheet
+		head.js('//fast.fonts.net/cssapi/2574e37c-f574-44e0-b64f-13d9bbeb7570.css', function()
+		{
+			var html = document.documentElement;
+			html.className = html.className.replace(/(\s|^)wf-loading(\s|$)/g, '$1wf-active$2');
+		});
 
 		// Inject dependencies + init
 		head.js('/assets/js/lib/jquery-1.11.1.min.js', function()
