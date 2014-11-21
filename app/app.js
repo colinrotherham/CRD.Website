@@ -6,17 +6,7 @@ var cluster = require('cluster'),
 
 // Express framework
 var app = express();
-
-// Master process
-if (cluster.isMaster) {
-
-	// Fork workers per CPU
-	for (var i = 0, j = os.cpus().length; i < j; i++)
-		cluster.fork();
-}
-
-// All workers share port 4000
-else app.listen(4000);
+app.listen(4000);
 
 var helpers = require('./lib/helpers');
 var routes = require('./routes/index');
