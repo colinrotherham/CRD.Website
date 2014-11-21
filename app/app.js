@@ -7,8 +7,6 @@ var cluster = require('cluster'),
 // Express framework
 var app = express();
 
-console.log(os.cpus().length);
-
 // Master process
 if (cluster.isMaster) {
 
