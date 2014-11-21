@@ -10,11 +10,11 @@ module.exports = function(grunt) {
 			live: {
 				options: {
 					style: 'compressed',
-					sourcemap: true
+					sourcemap: 'none'
 				},
 
 				files: {
-					'app/assets/css/combined.min.css': 'app/assets/scss/base.scss'
+					'app/public/assets/css/combined.min.css': 'app/public/assets/scss/base.scss'
 				}
 			}
 		},
@@ -28,8 +28,8 @@ module.exports = function(grunt) {
 
 			live: {
 				files : {
-					'app/assets/js/combined.min.js' : [
-						'app/assets/js/partials/launcher.js'
+					'app/public/assets/js/combined.min.js' : [
+						'app/public/assets/js/partials/launcher.js'
 					]
 				}
 			}
@@ -38,7 +38,7 @@ module.exports = function(grunt) {
 		smushit: {
 			live: {
 				src: [
-					'app/assets/img/{,*/}*.{png,jpg,gif}'
+					'app/public/assets/img/{,*/}*.{png,jpg,gif}'
 				]
 			}
 		},
@@ -46,12 +46,12 @@ module.exports = function(grunt) {
 		watch: {
 
 			sass: {
-				files: ['app/assets/scss/{,*/}{,*/}{,*/}*.scss'],
+				files: ['app/public/assets/scss/{,*/}{,*/}{,*/}*.scss'],
 				tasks: ['sass:live']
 			},
 
 			js: {
-				files: ['app/assets/js/partials/*.js', 'app/assets/js/lib/*.js'],
+				files: ['app/public/assets/js/partials/*.js', 'app/public/assets/js/lib/*.js'],
 				tasks: ['uglify:live'],
 
 				options: {
@@ -60,11 +60,23 @@ module.exports = function(grunt) {
 			},
 
 			css: {
-				files: ['app/assets/css/*.css', '!assets/css/*.min.css'],
+				files: ['app/public/assets/css/*.css', '!app/public/assets/css/*.min.css'],
 
 				options: {
 					livereload: true
 				}
+			}
+		},
+
+		browserSync: {
+
+			bsFiles: {
+				src : ['app/public/assets/js/**/*.js', 'app/public/assets/css/**/*.css'],
+			},
+
+			options: {
+				proxy: "local.colinr.com",
+				watchTask: true
 			}
 		}
 	});
@@ -74,4 +86,5 @@ module.exports = function(grunt) {
 
 	grunt.registerTask('default', ['sass:live', 'uglify:live']);
 	grunt.registerTask('images', ['smushit:live']);
+	grunt.registerTask('dev', ['default', 'browserSync', 'watch']);
 };
