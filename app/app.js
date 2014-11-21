@@ -1,40 +1,45 @@
-var express = require('express'),
-	expressHandlebars = require('express-handlebars'),
+var cluster = require('cluster'),
+	express = require('express'),
+	http = require('http'),
+	os = require('os'),
 	path = require('path');
 
-var routes = require('./routes/index');
+// Express framework
 var app = express();
-var server = app.listen(4000);
+
+console.log(os.cpus().length);
+
+// Master process
+if (cluster.isMaster) {
+
+	// Fork workers per CPU
+	for (var i = 0, j = os.cpus().length; i < j; i++)
+		cluster.fork();
+}
+
+// All workers share port 4000
+else app.listen(4000);
+
+var helpers = require('./lib/helpers');
+var routes = require('./routes/index');
 
 // Set up Handlebars
-var handlebars = expressHandlebars.create({
-
+var handlebars = require('express-handlebars').create({
 	extname: 'hbs',
-	helpers: {
-
-		is: function (value, test, options) {
-
-			if (value === test)
-				return options.fn(this);
-
-			else return options.inverse(this);
-		}
-	},
-	options: {
-		cache: true
-	}
+	helpers: helpers,
+	options: { cache: true }
 });
 
 // Set default layout
 app.locals.layout = path.join(__dirname, 'views/layouts/main.hbs');
 
-// Set up static file serving
-app.use(express.static(path.join(__dirname, 'public')));
-
 // Set view engine
 app.engine('hbs', handlebars.engine);
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'hbs');
+
+// Set up static file serving
+app.use(express.static(path.join(__dirname, 'public')));
 
 // Default router
 app.use('/', routes);
