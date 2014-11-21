@@ -8,7 +8,7 @@
     "async": "*",
     "express": "*",
     "express-handlebars": "*",
-    "supervisor": "*"
+    "forever": "*"
   },
   "devDependencies": {
     "grunt": "*",
@@ -21,7 +21,7 @@
   },
   "engine": "node >=0.6.x",
   "scripts": {
-    "start": "supervisor app/app.js",
-    "start-dev": "supervisor app/app.js & grunt dev"
+    "start": "forever app/app.js",
+    "start-dev": "forever app/app.js & grunt dev"
   }
 }
