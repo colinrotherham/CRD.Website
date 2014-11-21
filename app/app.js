@@ -46,5 +46,3 @@ app.use('/', routes);
 process.on('SIGINT', function() {
 	process.exit();
 });
-
-module.exports = app;
