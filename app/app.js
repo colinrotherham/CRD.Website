@@ -4,7 +4,7 @@ var express = require('express'),
 
 var routes = require('./routes/index');
 var app = express();
-var server = app.listen(3000);
+var server = app.listen(4000);
 
 // Set up Handlebars
 var handlebars = expressHandlebars.create({

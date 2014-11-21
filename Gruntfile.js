@@ -75,7 +75,7 @@ module.exports = function(grunt) {
 			},
 
 			options: {
-				proxy: "local.colinr.com",
+				proxy: "localhost:4000",
 				watchTask: true
 			}
 		}

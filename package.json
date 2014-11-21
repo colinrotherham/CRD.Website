@@ -21,6 +21,7 @@
   },
   "engine": "node >=0.6.x",
   "scripts": {
-    "start": "supervisor app/app.js"
+    "start": "supervisor app/app.js",
+    "start-dev": "supervisor app/app.js & grunt dev"
   }
 }
