@@ -39,4 +39,9 @@ app.set('view engine', 'hbs');
 // Default router
 app.use('/', routes);
 
+// Exit when quit
+process.on('SIGINT', function() {
+	process.exit();
+});
+
 module.exports = app;
