@@ -352,7 +352,6 @@
 			bottom: 4%;
 
 			width: 45%;
-
 			margin-left: -25%;
 			padding: 15px 2.5%;
 		}
@@ -360,15 +359,21 @@
 
 	@media (min-width: 56.25em)
 	{
+		#message
+		{
+			width: 56%;
+			margin-left: -30.5%;
+		}
+
 		#message p
 		{
 			float: left;
-			width: 48%;
+			width: 50%;
 		}
 
 		#message p + p
 		{
 			margin-top: 0;
-			margin-left: 4%;
+			text-align: right;
 		}
 	}
