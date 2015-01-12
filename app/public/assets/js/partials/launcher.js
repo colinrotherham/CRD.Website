@@ -17,75 +17,9 @@
 	Colin Rotherham Design
 	----------------------------------- */
 
-	// Website namespace
-	CRD.website = {};
-
 	(function(namespace)
 	{
 		'use strict';
-
-		// Navigation menu
-		namespace.Menu = function(menu, container, focus)
-		{
-			var self = this;
-
-			function open()
-			{
-				container.addClass(classToggle);
-			}
-
-			function close(event)
-			{
-				if (event && event.which && event.which !== 27) return;
-
-				// Stop email receiving focus until ready
-				focus.attr('tabindex', '-1');
-
-				container.removeClass(classToggle);
-				if (event) button.focus();
-			}
-
-			function toggle(event)
-			{
-				event.preventDefault();
-
-				if (container.hasClass(classToggle)) close();
-				else open();
-			}
-
-			var classToggle = 'toggle';
-			var button = menu.children('button');
-
-			// Toggle when clicked, listen for escape key
-			button.on('click touchend', toggle);
-			$(document).on('keyup', close);
-
-			close();
-		};
-
-		namespace.hasTransitions = (function()
-		{
-			// Transition prefixes + default
-			var prefixes = ['ms', 'O', 'Moz', 'Webkit', ''], prefix = prefixes[prefixes.length],
-				css = document.body.style, i = prefixes.length, hasTransitions = false;
-
-			// Check vendor prefixes
-			while (i--) { if (typeof css[prefixes[i] + 'Transition'] === 'string') { hasTransitions = true; break; } }
-
-			// Add to HTML tag
-			if (hasTransitions) document.documentElement.className += ' transitions';
-
-			return hasTransitions;
-		})();
-
-		namespace.EmailUnscramble = function(email, scrambled)
-		{
-			// Unscramble email
-			var unscrambled = CRD.email.unscramble(scrambled);
-
-			// Update link
-			email.attr('href', 'mailto:' + unscrambled).html(unscrambled);
-		};
 
 		// Inject font stylesheet
 		head.js('//fast.fonts.net/cssapi/2574e37c-f574-44e0-b64f-13d9bbeb7570.css', function()
@@ -97,16 +31,10 @@
 		// Inject dependencies + init
 		head.js('/assets/js/lib/jquery-1.11.1.min.js', function()
 		{
-			var nav = $('#nav'),
-				container = $('#container'),
-				email = $('#email');
 
-			// Ready… steady… go…
-			new namespace.Menu(nav, container, email);
-			new namespace.EmailUnscramble(email, [101, 211, 223, 230, 222, 219, 219, 206, 216, 179, 163, 210, 219, 213, 215, 224, 160, 145, 210, 220]);
 		});
 
-	})(CRD.website);
+	})(CRD);
 
 
 /*
