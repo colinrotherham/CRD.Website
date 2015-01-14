@@ -22,6 +22,6 @@
   "engine": "node >=0.6.x",
   "scripts": {
     "start": "forever app/app.js",
-    "start-dev": "forever app/app.js & grunt dev"
+    "start-dev": "forever -w app/app.js & grunt dev"
   }
 }
