@@ -31,7 +31,7 @@ async.map(assets, readFile, function(err, results) {
 router.get('/', function(req, res) {
 
 	viewData.title = 'Interaction design and web development';
-	viewData.pageClass = 'page-home';
+	viewData.pageClass = 'page page--home';
 
 	res.render('index', viewData);
 });
@@ -40,7 +40,7 @@ router.get('/', function(req, res) {
 router.get('*', function(req, res) {
 
 	viewData.title = 'Interaction design and web development';
-	viewData.pageClass = 'page-error';
+	viewData.pageClass = 'page page--error';
 
 	res.render('404', viewData);
 });
