@@ -12,8 +12,8 @@ var viewData = {
 };
 
 var assets = [
-	path.join(__dirname, '../public/assets/css/combined.min.css'),
-	path.join(__dirname, '../public/assets/js/combined.min.js')
+	path.join(__dirname, '../public/assets/css/base.css'),
+	path.join(__dirname, '../public/assets/js/base.min.js')
 ];
 
 function readFile(file, callback) {

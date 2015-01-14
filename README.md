@@ -9,12 +9,18 @@ Install Node.JS
 As root:
 
 ```
-gem update --system
-gem install sass
-npm install -g grunt-cli
+npm install --global gulp
 ```
 
-Install dependencies automatically by running:
+Install or update dependencies automatically:
 ```
 npm install
+npm update
+```
+
+Start Node.js Live or Development servers
+(As defined in `package.json`)
+```
+npm run start
+npm run start-dev
 ```

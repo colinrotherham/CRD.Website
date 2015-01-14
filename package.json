@@ -11,17 +11,18 @@
     "forever": "*"
   },
   "devDependencies": {
-    "grunt": "*",
-    "grunt-browser-sync": "*",
-    "grunt-contrib-watch": "*",
-    "grunt-contrib-uglify": "*",
-    "grunt-contrib-sass": "*",
-    "grunt-smushit": "*",
-    "matchdep": "*"
+    "browser-sync": "*",
+    "gulp": "*",
+    "gulp-filter": "*",
+    "gulp-ruby-sass": "*",
+    "gulp-smushit": "*",
+    "gulp-sourcemaps": "*",
+    "gulp-uglifyjs": "*",
+    "gulp-watch": "*"
   },
   "engine": "node >=0.6.x",
   "scripts": {
     "start": "forever app/app.js",
-    "start-dev": "forever -w app/app.js & grunt dev"
+    "start-dev": "forever -w app/app.js & gulp dev"
   }
 }
