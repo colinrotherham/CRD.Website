@@ -5,21 +5,17 @@
 	html, body, button, input, select, textarea {
 		color: #222;
 
+		-moz-osx-font-smoothing: grayscale;
 		-webkit-font-smoothing: antialiased;
-		-moz-osx-font-smoothing: grayscale
 	}
 
 	body {
-		-webkit-text-size-adjust: 100%;
-		-webkit-font-smoothing: antialiased;
+		text-size-adjust: 100%;
 	}
 
 	a {
 		text-decoration: none;
-
-		-webkit-transition: color 0.1s ease-in-out;
-		-moz-transition: color 0.1s ease-in-out;
-		transition: color 0.1s ease-in-out;
+		transition: color 100ms ease-in-out;
 
 		&, &:visited {
 			color: black;
@@ -63,15 +59,11 @@
 		padding: 0 2px;
 
 		text-decoration: none;
-
-		-webkit-transition: background-color 600ms ease-in-out;
 		transition: background-color 600ms ease-in-out;
 
 		&:hover,
 		&:focus {
 			background: rgba(154, 174, 183, 0.2);
-
-			-webkit-transition-duration: 300ms;
 			transition-duration: 300ms;
 		}
 	}
