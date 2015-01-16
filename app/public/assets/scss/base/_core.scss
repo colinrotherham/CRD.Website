@@ -2,16 +2,19 @@
 	Core styles
 	----------------------------------- */
 
-	html, body {
-		height: 100%;
-		overflow: hidden;
-
-		background: #efefed;
-	}
-
 	// Clearfix
 	.group:after {
 		content: '';
 		display: table;
 		clear: both;
+	}
+
+	html, body {
+		height: 100%;
+		overflow: hidden;
+	}
+
+	body {
+		background: rgb(167, 7, 53);
+		background: linear-gradient(50deg, map-get($colours, "red") 0%, map-get($colours, "red-lighter") 100%);
 	}

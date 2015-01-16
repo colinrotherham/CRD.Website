@@ -3,27 +3,12 @@
 	----------------------------------- */
 
 	html, body, button, input, select, textarea {
-		color: #222;
-
 		-moz-osx-font-smoothing: grayscale;
 		-webkit-font-smoothing: antialiased;
 	}
 
 	body {
 		text-size-adjust: 100%;
-	}
-
-	a {
-		text-decoration: none;
-		transition: color 100ms ease-in-out;
-
-		&, &:visited {
-			color: black;
-		}
-
-		&:hover {
-			text-decoration: underline;
-		}
 	}
 
 	h1, h2, h3, h4, p, button, input {
@@ -53,37 +38,14 @@
 	}
 
 	a {
-		display: inline-block;
-		color: #76868e;
-
-		padding: 0 2px;
-
+		color: white;
 		text-decoration: none;
-		transition: background-color 600ms ease-in-out;
+		transition: color 100ms ease-in-out;
 
 		&:hover,
 		&:focus {
 			background: rgba(154, 174, 183, 0.2);
+			text-decoration: underline;
 			transition-duration: 300ms;
 		}
-	}
-
-
-/*
-	Logo
-	----------------------------------- */
-
-	.logo {
-		position: absolute;
-		left: 50%;
-		top: 50%;
-
-		width: 270px;
-		height: 122px;
-
-		margin: -71px 0 0 -135px;
-
-		background: url('/assets/img/logo.png') no-repeat;
-		background: rgba(0, 0, 0, 0) url('/assets/img/logo.svg') no-repeat;
-		text-indent: -10000px;
 	}
