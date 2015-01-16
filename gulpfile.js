@@ -37,8 +37,6 @@
 			}
 		};
 
-		var prefixOptions
-
 		gulp.src('./app/public/assets/scss/*.scss')
 			.pipe(sourcemaps.init())
 			.pipe(sass(options.sass))
