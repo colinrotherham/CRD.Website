@@ -11,7 +11,8 @@
 		filter = require('gulp-filter'),
 		prefix = require('gulp-autoprefixer'),
 		minifyCSS = require('gulp-minify-css'),
-		browserSync = require('browser-sync');
+		browserSync = require('browser-sync'),
+		nodemon = require('gulp-nodemon');
 
 /*
 	Sass to CSS
@@ -101,6 +102,11 @@
 
 	// Development
 	gulp.task('dev', ['default', 'browser-sync'], function () {
+
+		// Start web server
+		nodemon({
+			script: 'app/app.js', ext: 'js hbs css'
+		});
 
 		// Watch for Sass and JS changes
 		gulp.watch('./app/public/assets/scss/{,*/}{,*/}{,*/}*.scss', ['sass']);
