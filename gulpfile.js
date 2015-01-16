@@ -4,11 +4,13 @@
 
 	var gulp = require('gulp'),
 		sourcemaps = require('gulp-sourcemaps'),
-		sass = require('gulp-ruby-sass'),
+		sass = require('gulp-sass'),
 		uglify = require('gulp-uglifyjs'),
 		smushit = require('gulp-smushit'),
 		watch = require('gulp-watch'),
 		filter = require('gulp-filter'),
+		prefix = require('gulp-autoprefixer'),
+		minifyCSS = require('gulp-minify-css'),
 		browserSync = require('browser-sync');
 
 /*
@@ -18,13 +20,27 @@
 	gulp.task('sass', function() {
 
 		var options = {
-			style: 'compressed'
+
+			sass: {
+				style: 'compressed'
+			},
+
+			prefix: {
+				browsers: ['> 2%', 'IE 8'],
+				cascade: false,
+				remove: true
+			}
 		};
 
+		var prefixOptions
+
 		gulp.src('./app/public/assets/scss/*.scss')
-			.pipe(sass(options))
+			.pipe(sourcemaps.init())
+			.pipe(sass(options.sass))
+			.pipe(prefix(options.prefix))
+			.pipe(minifyCSS())
+			.pipe(sourcemaps.write('.'))
 			.pipe(gulp.dest('./app/public/assets/css'))
-			.pipe(filter('**/*.css'))
 			.pipe(browserSync.reload({ stream: true }));
 	});
 
