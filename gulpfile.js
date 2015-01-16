@@ -22,13 +22,18 @@
 		var options = {
 
 			sass: {
-				style: 'compressed'
+				style: 'compressed',
+				errLogToConsole: true
 			},
 
 			prefix: {
 				browsers: ['> 2%', 'IE 8'],
 				cascade: false,
 				remove: true
+			},
+
+			minifyCSS: {
+				keepSpecialComments: false
 			}
 		};
 
@@ -38,7 +43,7 @@
 			.pipe(sourcemaps.init())
 			.pipe(sass(options.sass))
 			.pipe(prefix(options.prefix))
-			.pipe(minifyCSS())
+			.pipe(minifyCSS(options.minifyCSS))
 			.pipe(sourcemaps.write('.'))
 			.pipe(gulp.dest('./app/public/assets/css'))
 			.pipe(browserSync.reload({ stream: true }));
