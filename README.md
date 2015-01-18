@@ -5,6 +5,7 @@ Setup
 -----
 
 Install Node.JS
+Install Java SE JDK (Google Closure Compiler)
 
 As root:
 

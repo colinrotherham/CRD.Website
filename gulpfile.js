@@ -12,8 +12,9 @@
 		prefix = require('gulp-autoprefixer'),
 		minifyCSS = require('gulp-minify-css'),
 		rename = require('gulp-rename'),
-		browserSync = require('browser-sync'),
-		nodemon = require('gulp-nodemon');
+		closureCompiler = require('gulp-closure-compiler'),
+		nodemon = require('gulp-nodemon'),
+		browserSync = require('browser-sync');
 
 /*
 	Sass to CSS
@@ -76,12 +77,17 @@
 			uglify: {
 				outSourceMap: true
 			},
+
+			closureCompiler: {
+				compilerPath: './bower_components/closure-compiler/compiler.jar',
+				fileName: 'base.min.js'
 			}
 		};
 
-		gulp.src('./app/public/assets/js/partials/launcher.js')
-			.pipe(uglify('base.min.js', options))
-			.pipe(gulp.dest('./app/public/assets/js/'))
+		gulp.src(options.input)
+			.pipe(uglify(options.output.filename, options.uglify))
+			.pipe(closureCompiler(options.closureCompiler))
+			.pipe(gulp.dest(options.output.directory))
 			.pipe(filter('**/*.js'))
 			.pipe(browserSync.reload({ stream: true }));
 	});

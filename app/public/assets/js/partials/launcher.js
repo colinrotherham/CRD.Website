@@ -29,6 +29,7 @@
 		});
 
 		// Inject dependencies + init
+		new namespace.Menu('.menu');
 
 	})(CRD);
 
