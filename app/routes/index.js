@@ -11,7 +11,7 @@
 
 	// Default view data
 	var viewData = {
-		layout: path.join(__dirname, '../views/layouts/main.hbs'),
+		layout: 'main',
 		includeCSS: '',
 		includeJS: '',
 		pageClass: ''

@@ -14,7 +14,9 @@
 	handlebars = handlebars.create({
 		extname: 'hbs',
 		helpers: require('./lib/helpers'),
-		options: { cache: true }
+		options: { cache: true },
+		layoutsDir: path.join(__dirname, '/views/layouts'),
+		partialsDir: path.join(__dirname, '/views/partials')
 	});
 
 	// Express framework
