@@ -129,7 +129,7 @@
 	gulp.task('default', ['sass', 'uglify']);
 
 	// Development
-	gulp.task('dev', ['default', 'browser-sync'], function () {
+	gulp.task('dev', ['default', 'browser-sync'], function() {
 
 		// Start web server
 		nodemon({
