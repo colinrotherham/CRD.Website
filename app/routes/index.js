@@ -13,24 +13,17 @@
 	var viewData = {
 		layout: 'main',
 		includeCSS: '',
-		includeJS: '',
 		pageClass: ''
 	};
-
-	var assets = [
-		path.join(__dirname, '../public/assets/css/base.min.css'),
-		path.join(__dirname, '../public/assets/js/base.min.js')
-	];
 
 	function readFile(file, callback) {
 		fs.readFile(file, 'utf8', callback);
 	}
 
 	// Map assets, render
-	async.map(assets, readFile, function(err, results) {
+	async.map([path.join(__dirname, '../public/assets/css/base.min.css')], readFile, function(err, results) {
 
 		viewData.includeCSS = results[0];
-		viewData.includeJS = results[1];
 	});
 
 	// Home page

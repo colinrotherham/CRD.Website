@@ -1,0 +1,12 @@
+{
+  "name": "CRD.Website",
+  "version": "0.2.0",
+  "homepage": "https://github.com/colinrotherham/CRD.Website",
+  "authors": [
+    "Colin Rotherham <work@colinr.com>"
+  ],
+  "description": "Website for Colin Rotherham Design Ltd.",
+  "devDependencies": {
+    "jquery": "~2.1.3"
+  }
+}

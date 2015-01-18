@@ -62,7 +62,21 @@
 	gulp.task('uglify', function() {
 
 		var options = {
-			outSourceMap: true
+
+			input: [
+				'./bower_components/jquery/dist/jquery.js',
+				'./app/public/assets/js/partials/launcher.js'
+			],
+
+			output: {
+				filename: 'base.min.js',
+				directory: './app/public/assets/js/'
+			},
+
+			uglify: {
+				outSourceMap: true
+			},
+			}
 		};
 
 		gulp.src('./app/public/assets/js/partials/launcher.js')

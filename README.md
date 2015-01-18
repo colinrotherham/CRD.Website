@@ -10,17 +10,18 @@ As root:
 
 ```
 npm install --global gulp
+npm install --global bower
 ```
 
 Install or update dependencies automatically:
 ```
 npm install
 npm update
+bower install
+bower update
 ```
 
-Start Node.js Live or Development servers
-(As defined in `package.json`)
+Set up development environment and start Node.js
 ```
-npm run start
-npm run start-dev
+gulp dev
 ```

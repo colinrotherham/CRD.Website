@@ -29,10 +29,6 @@
 		});
 
 		// Inject dependencies + init
-		head.js('/assets/js/lib/jquery-1.11.1.min.js', function()
-		{
-
-		});
 
 	})(CRD);
 
