@@ -88,10 +88,33 @@
 
 		gulp.src(options.input)
 			.pipe(uglify(options.output.filename, options.uglify))
-			.pipe(closureCompiler(options.closureCompiler))
 			.pipe(gulp.dest(options.output.directory))
 			.pipe(filter('**/*.js'))
 			.pipe(browserSync.reload({ stream: true }));
+	});
+
+
+/*
+	Closure compiler
+	----------------------------------- */
+
+	gulp.task('closure', function() {
+
+		var options = {
+
+			input: [
+				'./app/public/assets/js/base.min.js',
+			],
+
+			output: {
+				filename: 'base.min.js',
+				directory: './app/public/assets/js/'
+			},
+		};
+
+		gulp.src(options.input)
+			.pipe(closureCompiler({ compilerPath: './bower_components/closure-compiler/compiler.jar' }))
+			.pipe(gulp.dest(options.output.directory));
 	});
 
 
@@ -139,6 +162,11 @@
 		// Watch for Sass and JS changes
 		gulp.watch('./app/public/assets/scss/{,*/}{,*/}{,*/}*.scss', ['sass']);
 		gulp.watch(['./app/public/assets/js/partials/*.js', './app/public/assets/js/lib/*.js'], ['uglify']);
+	});
+
+	// Live
+	gulp.task('live', ['default'], function() {
+		gulp.watch('./app/public/assets/js/base.min.js', ['closure']);
 	});
 
 	// Optimise images
