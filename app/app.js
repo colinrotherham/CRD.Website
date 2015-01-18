@@ -1,38 +1,36 @@
-var cluster = require('cluster'),
-	express = require('express'),
-	http = require('http'),
-	os = require('os'),
-	path = require('path');
+/*
+	Node.js app setup
+	----------------------------------- */
 
-// Express framework
-var app = express();
-app.listen(4000);
+	// Main dependencies
+	var cluster = require('cluster'),
+		express = require('express'),
+		http = require('http'),
+		os = require('os'),
+		path = require('path'),
+		handlebars = require('express-handlebars');
 
-var helpers = require('./lib/helpers');
-var routes = require('./routes/index');
+	// Set up new Handlebars environment
+	handlebars = handlebars.create({
+		extname: 'hbs',
+		helpers: require('./lib/helpers'),
+		options: { cache: true }
+	});
 
-// Set up Handlebars
-var handlebars = require('express-handlebars').create({
-	extname: 'hbs',
-	helpers: helpers,
-	options: { cache: true }
-});
+	// Express framework
+	var app = express();
+	app.listen(4000);
 
-// Set default layout
-app.locals.layout = path.join(__dirname, 'views/layouts/main.hbs');
+	// Set view engine
+	app.engine('hbs', handlebars.engine)
+		.set('views', path.join(__dirname, 'views'))
+		.set('view engine', 'hbs')
 
-// Set view engine
-app.engine('hbs', handlebars.engine);
-app.set('views', path.join(__dirname, 'views'));
-app.set('view engine', 'hbs');
+		// Set up static file serving, add router
+		.use(express.static(path.join(__dirname, 'public')))
+		.use('/', require('./routes/index'));
 
-// Set up static file serving
-app.use(express.static(path.join(__dirname, 'public')));
-
-// Default router
-app.use('/', routes);
-
-// Exit when quit
-process.on('SIGINT', function() {
-	process.exit();
-});
+	// Exit when quit
+	process.on('SIGINT', function() {
+		process.exit();
+	});

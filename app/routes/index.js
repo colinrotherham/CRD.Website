@@ -1,48 +1,54 @@
-var async = require('async'),
-	express = require('express'),
-	fs = require('fs'),
-	path = require('path');
+/*
+	Node.js app setup
+	----------------------------------- */
 
-var router = express.Router();
+	var async = require('async'),
+		express = require('express'),
+		fs = require('fs'),
+		path = require('path');
 
-var viewData = {
-	includeCSS: '',
-	includeJS: '',
-	pageClass: ''
-};
+	var router = express.Router();
 
-var assets = [
-	path.join(__dirname, '../public/assets/css/base.css'),
-	path.join(__dirname, '../public/assets/js/base.min.js')
-];
+	// Default view data
+	var viewData = {
+		layout: path.join(__dirname, '../views/layouts/main.hbs'),
+		includeCSS: '',
+		includeJS: '',
+		pageClass: ''
+	};
 
-function readFile(file, callback) {
-	fs.readFile(file, 'utf8', callback);
-}
+	var assets = [
+		path.join(__dirname, '../public/assets/css/base.css'),
+		path.join(__dirname, '../public/assets/js/base.min.js')
+	];
 
-// Map assets, render
-async.map(assets, readFile, function(err, results) {
+	function readFile(file, callback) {
+		fs.readFile(file, 'utf8', callback);
+	}
 
-	viewData.includeCSS = results[0];
-	viewData.includeJS = results[1];
-});
+	// Map assets, render
+	async.map(assets, readFile, function(err, results) {
 
-// Home page
-router.get('/', function(req, res) {
+		viewData.includeCSS = results[0];
+		viewData.includeJS = results[1];
+	});
 
-	viewData.title = 'Interaction design and web development';
-	viewData.pageClass = 'page page--home';
+	// Home page
+	router.get('/', function(req, res) {
 
-	res.render('index', viewData);
-});
+		viewData.title = 'Interaction design and web development';
+		viewData.pageClass = 'page page--home';
 
-// 404 page
-router.get('*', function(req, res) {
+		res.render('index', viewData);
+	});
 
-	viewData.title = 'Interaction design and web development';
-	viewData.pageClass = 'page page--error';
+	// 404 page
+	router.get('*', function(req, res) {
 
-	res.render('404', viewData);
-});
+		viewData.title = 'Interaction design and web development';
+		viewData.pageClass = 'page page--error';
 
-module.exports = router;
+		res.render('404', viewData);
+	});
+
+	module.exports = router;
