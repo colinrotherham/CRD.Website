@@ -36,6 +36,10 @@
 
 			minifyCSS: {
 				keepSpecialComments: false
+			},
+
+			rename: {
+				suffix: '.min'
 			}
 		};
 
@@ -44,7 +48,7 @@
 			.pipe(sass(options.sass))
 			.pipe(prefix(options.prefix))
 			.pipe(minifyCSS(options.minifyCSS))
-			.pipe(rename({suffix: '.min'}))
+			.pipe(rename(options.rename))
 			.pipe(sourcemaps.write('.'))
 			.pipe(gulp.dest('./app/public/assets/css'))
 			.pipe(browserSync.reload({ stream: true }));
