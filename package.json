@@ -24,8 +24,5 @@
     "gulp-nodemon": "~1.0.5",
     "gulp-rename": "~1.2.0"
   },
-  "engine": "node >=0.6.x",
-  "scripts": {
-    "start": "gulp dev"
-  }
+  "engine": "node >=0.6.x"
 }
