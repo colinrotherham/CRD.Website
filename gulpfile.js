@@ -11,6 +11,7 @@
 		filter = require('gulp-filter'),
 		prefix = require('gulp-autoprefixer'),
 		minifyCSS = require('gulp-minify-css'),
+		rename = require('gulp-rename'),
 		browserSync = require('browser-sync'),
 		nodemon = require('gulp-nodemon');
 
@@ -43,6 +44,7 @@
 			.pipe(sass(options.sass))
 			.pipe(prefix(options.prefix))
 			.pipe(minifyCSS(options.minifyCSS))
+			.pipe(rename({suffix: '.min'}))
 			.pipe(sourcemaps.write('.'))
 			.pipe(gulp.dest('./app/public/assets/css'))
 			.pipe(browserSync.reload({ stream: true }));

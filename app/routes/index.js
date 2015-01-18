@@ -18,7 +18,7 @@
 	};
 
 	var assets = [
-		path.join(__dirname, '../public/assets/css/base.css'),
+		path.join(__dirname, '../public/assets/css/base.min.css'),
 		path.join(__dirname, '../public/assets/js/base.min.js')
 	];
 
