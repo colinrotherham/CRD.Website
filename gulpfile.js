@@ -66,6 +66,7 @@
 
 			input: [
 				'./bower_components/jquery/dist/jquery.js',
+				'./app/public/assets/js/partials/utilities.js',
 				'./app/public/assets/js/partials/launcher.js'
 			],
 
