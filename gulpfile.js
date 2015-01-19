@@ -17,32 +17,71 @@
 		browserSync = require('browser-sync');
 
 /*
+	Shared options
+	----------------------------------- */
+
+	var options = {
+
+		sass: {
+			style: 'compressed',
+			errLogToConsole: true
+		},
+
+		prefix: {
+			browsers: ['> 2%', 'IE 8'],
+			cascade: false,
+			remove: true
+		},
+
+		minifyCSS: {
+			keepSpecialComments: false
+		},
+
+		rename: {
+			suffix: '.min'
+		},
+
+		uglify: {
+
+			input: [
+				'./bower_components/jquery/dist/jquery.js',
+				'./app/public/assets/js/partials/utilities.js',
+				'./app/public/assets/js/partials/menu.js',
+				'./app/public/assets/js/partials/launcher.js'
+			],
+
+			output: {
+				filename: 'base.min.js',
+				directory: './app/public/assets/js/'
+			},
+
+			config: {
+				outSourceMap: true,
+				compress: false
+			}
+		},
+
+		closureCompiler: {
+
+			compilerPath: './bower_components/closure-compiler/compiler.jar',
+
+			compilerFlags: {
+				compilation_level: 'ADVANCED_OPTIMIZATIONS',
+				warning_level: 'QUIET'
+			}
+		},
+
+		browserSync: {
+			proxy: 'localhost:4000'
+		}
+	};
+
+
+/*
 	Sass to CSS
 	----------------------------------- */
 
 	gulp.task('sass', function() {
-
-		var options = {
-
-			sass: {
-				style: 'compressed',
-				errLogToConsole: true
-			},
-
-			prefix: {
-				browsers: ['> 2%', 'IE 8'],
-				cascade: false,
-				remove: true
-			},
-
-			minifyCSS: {
-				keepSpecialComments: false
-			},
-
-			rename: {
-				suffix: '.min'
-			}
-		};
 
 		gulp.src('./app/public/assets/scss/*.scss')
 			.pipe(sourcemaps.init())
@@ -62,28 +101,9 @@
 
 	gulp.task('uglify', function() {
 
-		var options = {
-
-			input: [
-				'./bower_components/jquery/dist/jquery.js',
-				'./app/public/assets/js/partials/utilities.js',
-				'./app/public/assets/js/partials/menu.js',
-				'./app/public/assets/js/partials/launcher.js'
-			],
-
-			output: {
-				filename: 'base.min.js',
-				directory: './app/public/assets/js/'
-			},
-
-			uglify: {
-				outSourceMap: true
-			}
-		};
-
-		gulp.src(options.input)
-			.pipe(uglify(options.output.filename, options.uglify))
-			.pipe(gulp.dest(options.output.directory))
+		gulp.src(options.uglify.input)
+			.pipe(uglify(options.uglify.output.filename, options.uglify.config))
+			.pipe(gulp.dest(options.uglify.output.directory))
 			.pipe(filter('**/*.js'))
 			.pipe(browserSync.reload({ stream: true }));
 	});
@@ -95,25 +115,12 @@
 
 	gulp.task('closure', function() {
 
-		var options = {
+		// Build from Uglify options
+		options.closureCompiler.fileName = options.uglify.output.filename;
 
-			input: [
-				'./app/public/assets/js/base.min.js',
-			],
-
-			output: {
-				filename: 'base.min.js',
-				directory: './app/public/assets/js/'
-			},
-
-			closureCompiler: {
-				compilerPath: './bower_components/closure-compiler/compiler.jar'
-			}
-		};
-
-		gulp.src(options.input)
+		gulp.src(options.uglify.input)
 			.pipe(closureCompiler(options.closureCompiler))
-			.pipe(gulp.dest(options.output.directory));
+			.pipe(gulp.dest(options.uglify.output.directory));
 	});
 
 
@@ -134,12 +141,7 @@
 	----------------------------------- */
 
 	gulp.task('browser-sync', function() {
-
-		var options = {
-			proxy: 'localhost:4000'
-		};
-
-		browserSync(options);
+		browserSync(options.browserSync);
 	});
 
 
@@ -164,9 +166,7 @@
 	});
 
 	// Live
-	gulp.task('live', ['default'], function() {
-		gulp.watch('./app/public/assets/js/base.min.js', ['closure']);
-	});
+	gulp.task('live', ['sass', 'closure']);
 
 	// Optimise images
 	gulp.task('images', ['smushit']);
