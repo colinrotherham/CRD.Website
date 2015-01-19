@@ -149,6 +149,15 @@
 
 
 /*
+	Start Node.js
+	----------------------------------- */
+
+	gulp.task('serve', function() {
+		nodemon(options.nodemon);
+	});
+
+
+/*
 	Define tasks
 	----------------------------------- */
 
@@ -156,10 +165,7 @@
 	gulp.task('default', ['sass', 'uglify']);
 
 	// Development
-	gulp.task('dev', ['default', 'browser-sync'], function() {
-
-		// Start web server
-		nodemon(options.nodemon);
+	gulp.task('dev', ['default', 'browser-sync', 'serve'], function() {
 
 		// Watch for Sass and JS changes
 		gulp.watch('./app/public/assets/scss/{,*/}{,*/}{,*/}*.scss', ['sass']);
@@ -167,11 +173,7 @@
 	});
 
 	// Live
-	gulp.task('live', ['sass', 'closure'], function() {
-
-		// Start web server
-		nodemon(options.nodemon);
-	});
+	gulp.task('live', ['sass', 'closure', 'serve']);
 
 	// Optimise images
 	gulp.task('images', ['smushit']);
