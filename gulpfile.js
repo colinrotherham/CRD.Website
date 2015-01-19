@@ -66,7 +66,6 @@
 			compilerPath: './bower_components/closure-compiler/compiler.jar',
 
 			compilerFlags: {
-				compilation_level: 'ADVANCED_OPTIMIZATIONS',
 				warning_level: 'QUIET'
 			}
 		},
