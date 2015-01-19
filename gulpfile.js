@@ -78,11 +78,6 @@
 
 			uglify: {
 				outSourceMap: true
-			},
-
-			closureCompiler: {
-				compilerPath: './bower_components/closure-compiler/compiler.jar',
-				fileName: 'base.min.js'
 			}
 		};
 
@@ -110,10 +105,14 @@
 				filename: 'base.min.js',
 				directory: './app/public/assets/js/'
 			},
+
+			closureCompiler: {
+				compilerPath: './bower_components/closure-compiler/compiler.jar'
+			}
 		};
 
 		gulp.src(options.input)
-			.pipe(closureCompiler({ compilerPath: './bower_components/closure-compiler/compiler.jar' }))
+			.pipe(closureCompiler(options.closureCompiler))
 			.pipe(gulp.dest(options.output.directory));
 	});
 
