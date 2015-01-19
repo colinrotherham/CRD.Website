@@ -59,38 +59,30 @@
 		return ss;
 	};
 
-	// Add "bind" browser support
+	// Taken from https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Function/bind
 	if (!Function.prototype.bind) {
 
-		Function.prototype.bind = function bind(that) {
-			var target = this;
+		Function.prototype.bind = function (oThis) {
 
-			if (typeof target != "function") {
-				throw new TypeError();
+			if (typeof this !== "function") {
+				// closest thing possible to the ECMAScript 5
+				// internal IsCallable function
+				throw new TypeError("Function.prototype.bind - what is trying to be bound is not callable");
 			}
 
-			var args = slice.call(arguments, 1),
-				bound = function () {
+			var aArgs = Array.prototype.slice.call(arguments, 1),
+				fToBind = this,
+				fNOP = function () {},
+				fBound = function () {
+					return fToBind.apply(this instanceof fNOP && oThis
+						? this
+						: oThis,
+						aArgs.concat(Array.prototype.slice.call(arguments)));
+				};
 
-				if (this instanceof bound) {
+			fNOP.prototype = this.prototype;
+			fBound.prototype = new fNOP();
 
-					var F = function(){};
-					F.prototype = target.prototype;
-
-					var self = new F();
-					var result = target.apply(self, args.concat(slice.call(arguments)));
-
-					if (Object(result) === result) {
-						return result;
-					}
-
-					return self;
-
-				} else {
-					return target.apply(that, args.concat(slice.call(arguments)));
-				}
-			};
-
-			return bound;
+			return fBound;
 		};
 	}
