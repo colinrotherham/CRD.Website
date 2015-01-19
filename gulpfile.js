@@ -168,7 +168,11 @@
 	});
 
 	// Live
-	gulp.task('live', ['sass', 'closure']);
+	gulp.task('live', ['sass', 'closure'], function() {
+
+		// Start web server
+		nodemon(options.nodemon);
+	});
 
 	// Optimise images
 	gulp.task('images', ['smushit']);
