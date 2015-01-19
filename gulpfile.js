@@ -145,6 +145,10 @@
 
 	gulp.task('browser-sync', function() {
 		browserSync(options.browserSync);
+
+		// Watch for Sass and JS changes
+		gulp.watch('./app/public/assets/scss/{,*/}{,*/}{,*/}*.scss', ['sass']);
+		gulp.watch(['./app/public/assets/js/partials/*.js', './app/public/assets/js/lib/*.js'], ['uglify']);
 	});
 
 
@@ -162,18 +166,11 @@
 	----------------------------------- */
 
 	// Default
-	gulp.task('default', ['sass', 'uglify']);
+	gulp.task('default', ['dev']);
 
-	// Development
-	gulp.task('dev', ['default', 'browser-sync', 'serve'], function() {
-
-		// Watch for Sass and JS changes
-		gulp.watch('./app/public/assets/scss/{,*/}{,*/}{,*/}*.scss', ['sass']);
-		gulp.watch(['./app/public/assets/js/partials/*.js', './app/public/assets/js/lib/*.js'], ['uglify']);
-	});
-
-	// Live
-	gulp.task('live', ['sass', 'closure', 'serve']);
+	// Development and Live tasks
+	gulp.task('dev', ['sass', 'uglify', 'browser-sync', 'serve']);
+	gulp.task('live', ['sass', 'closure', 'browser-sync', 'serve']);
 
 	// Optimise images
 	gulp.task('images', ['smushit']);
