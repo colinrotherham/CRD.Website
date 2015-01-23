@@ -1,5 +1,5 @@
 /*
-	Base, inlined in <head>
+	Starter, inlined in <head>
 	----------------------------------- */
 
 	// Libraries
@@ -8,8 +8,6 @@
 	// Base partials
 	@import 'base/variables';
 	@import 'base/core';
-	@import 'base/type';
-	@import 'base/forms';
 	@import 'base/layout';
 
 	// Component partials

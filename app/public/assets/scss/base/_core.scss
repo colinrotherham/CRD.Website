@@ -9,12 +9,9 @@
 		clear: both;
 	}
 
-	html {
-		box-sizing: border-box;
-	}
-
-	*, *:before, *:after {
-		box-sizing: inherit;
+	html, body, button, input, select, textarea {
+		-moz-osx-font-smoothing: grayscale;
+		-webkit-font-smoothing: antialiased;
 	}
 
 	html, body {
@@ -25,4 +22,13 @@
 	body {
 		background: rgb(167, 7, 53);
 		background: linear-gradient(50deg, map-get($colours, "red") 0%, map-get($colours, "red-lighter") 100%);
+		text-size-adjust: 100%;
+	}
+
+	html {
+		box-sizing: border-box;
+	}
+
+	*, *:before, *:after {
+		box-sizing: inherit;
 	}

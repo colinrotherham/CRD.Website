@@ -21,7 +21,7 @@
 	}
 
 	// Map assets, render
-	async.map([path.join(__dirname, '../public/assets/css/base.min.css')], readFile, function(err, results) {
+	async.map([path.join(__dirname, '../public/assets/css/starter.min.css')], readFile, function(err, results) {
 
 		viewData.includeCSS = results[0];
 	});
