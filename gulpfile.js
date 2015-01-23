@@ -12,7 +12,6 @@
 		prefix = require('gulp-autoprefixer'),
 		minifyCSS = require('gulp-minify-css'),
 		rename = require('gulp-rename'),
-		closureCompiler = require('gulp-closure-compiler'),
 		nodemon = require('gulp-nodemon'),
 		browserSync = require('browser-sync');
 
@@ -62,15 +61,6 @@
 			}
 		},
 
-		closureCompiler: {
-
-			compilerPath: './bower_components/closure-compiler/compiler.jar',
-
-			compilerFlags: {
-				warning_level: 'QUIET'
-			}
-		},
-
 		browserSync: {
 			proxy: 'localhost:4000'
 		},
@@ -110,21 +100,6 @@
 			.pipe(gulp.dest(options.uglify.output.directory))
 			.pipe(filter('**/*.js'))
 			.pipe(browserSync.reload({ stream: true }));
-	});
-
-
-/*
-	Closure compiler
-	----------------------------------- */
-
-	gulp.task('closure', function() {
-
-		// Build from Uglify options
-		options.closureCompiler.fileName = options.uglify.output.filename;
-
-		gulp.src(options.uglify.input)
-			.pipe(closureCompiler(options.closureCompiler))
-			.pipe(gulp.dest(options.uglify.output.directory));
 	});
 
 
@@ -171,7 +146,7 @@
 
 	// Development and Live tasks
 	gulp.task('dev', ['sass', 'uglify', 'browser-sync', 'serve']);
-	gulp.task('live', ['sass', 'closure', 'browser-sync', 'serve']);
+	gulp.task('live', ['sass', 'uglify', 'serve']);
 
 	// Optimise images
 	gulp.task('images', ['smushit']);
