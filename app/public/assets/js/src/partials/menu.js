@@ -2,8 +2,8 @@
 	Menu
 	----------------------------------- */
 
-	CRD.Menu = function(nav)
-	{
+	define('menu', ['jquery'], function($) {
+
 		'use strict';
 
 		function init() {
@@ -17,4 +17,4 @@
 		// On this page?
 		if (menu.length && button.length)
 			init();
-	};
+	});

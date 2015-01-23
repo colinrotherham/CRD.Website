@@ -45,14 +45,15 @@
 
 			input: [
 				'./bower_components/jquery/dist/jquery.js',
-				'./app/public/assets/js/partials/utilities.js',
-				'./app/public/assets/js/partials/menu.js',
-				'./app/public/assets/js/partials/launcher.js'
+				'./bower_components/almond/almond.js',
+				'./app/public/assets/js/src/lib/*.js',
+				'./app/public/assets/js/src/partials/*.js',
+				'./app/public/assets/js/src/config.js'
 			],
 
 			output: {
 				filename: 'base.min.js',
-				directory: './app/public/assets/js/'
+				directory: './app/public/assets/js'
 			},
 
 			config: {
@@ -148,7 +149,7 @@
 
 		// Watch for Sass and JS changes
 		gulp.watch('./app/public/assets/scss/{,*/}{,*/}{,*/}*.scss', ['sass']);
-		gulp.watch(['./app/public/assets/js/partials/*.js', './app/public/assets/js/lib/*.js'], ['uglify']);
+		gulp.watch(['./app/public/assets/js/src/{,*/}{,*/}{,*/}*.js'], ['uglify']);
 	});
 
 
