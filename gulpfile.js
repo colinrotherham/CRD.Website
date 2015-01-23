@@ -13,6 +13,8 @@
 		minifyCSS = require('gulp-minify-css'),
 		rename = require('gulp-rename'),
 		nodemon = require('gulp-nodemon'),
+		eventStream = require('event-stream'),
+		amdOptimize = require('amd-optimize'),
 		browserSync = require('browser-sync');
 
 /*
@@ -40,15 +42,25 @@
 			suffix: '.min'
 		},
 
-		uglify: {
+		requireJS: {
 
-			input: [
+			dependencies: [
 				'./bower_components/jquery/dist/jquery.js',
-				'./bower_components/almond/almond.js',
+				'./bower_components/almond/almond.js'
+			],
+
+			modules: [
 				'./app/public/assets/js/src/lib/*.js',
 				'./app/public/assets/js/src/partials/*.js',
 				'./app/public/assets/js/src/config.js'
 			],
+
+			config: {
+				findNestedDependencies: true
+			}
+		},
+
+		uglify: {
 
 			output: {
 				filename: 'base.min.js',
@@ -95,7 +107,18 @@
 
 	gulp.task('uglify', function() {
 
-		gulp.src(options.uglify.input)
+		// Merge two glob streams
+		eventStream.merge(
+
+			// Dependencies
+			gulp.src(options.requireJS.dependencies),
+
+			// RequireJS modules
+			gulp.src(options.requireJS.modules)
+				.pipe(amdOptimize('config', options.requireJS.config))
+			)
+
+			// Combine and uglify
 			.pipe(uglify(options.uglify.output.filename, options.uglify.config))
 			.pipe(gulp.dest(options.uglify.output.directory))
 			.pipe(filter('**/*.js'))
