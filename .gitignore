@@ -1,5 +1,8 @@
 node_modules
+bower_components
 .sass-cache
 *.sublime-*
-**/css/*.min.*
+**/css/*
 **/js/*.min.js
+**/js/*.map
+*.log
