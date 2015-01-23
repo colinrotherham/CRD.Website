@@ -2,7 +2,7 @@
 	LoadJS (Filament Group, Inc)
 	------------------------------- */
 
-	define('loadCSS', function() {
+	define(function() {
 
 		'use strict';
 

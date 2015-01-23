@@ -2,7 +2,7 @@
 	Menu
 	----------------------------------- */
 
-	define('menu', ['jquery'], function($) {
+	define(['jquery'], function($) {
 
 		'use strict';
 

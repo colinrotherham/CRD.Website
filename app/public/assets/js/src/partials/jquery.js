@@ -2,6 +2,6 @@
 	jQuery shim
 	------------------------------- */
 
-	define('jquery', function() {
+	define(function() {
 		return window.jQuery.noConflict(true);
 	});
