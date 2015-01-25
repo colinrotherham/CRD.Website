@@ -45,11 +45,11 @@
 		requireJS: {
 
 			dependencies: [
-				'./bower_components/almond/almond.js'
+				'./node_modules/almond/almond.js'
 			],
 
 			modules: [
-				'./bower_components/jquery/dist/jquery.js',
+				'./node_modules/jquery/dist/jquery.js',
 				'./app/public/assets/js/src/lib/*.js',
 				'./app/public/assets/js/src/partials/*.js',
 				'./app/public/assets/js/src/config.js'
