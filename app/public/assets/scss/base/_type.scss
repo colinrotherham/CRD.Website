@@ -2,12 +2,16 @@
 	Type
 	----------------------------------- */
 
-	h1, h2, h3, h4, p, button, input {
-		font: 500 16px/1.4 'Adelle SansW01-Regular', Helvetica, Arial, sans-serif;
+	body, button, input, select, textarea {
+		font: 100 16px/1.4 'Adelle W01', Helvetica, Arial, sans-serif;
+	}
 
-		&:last-child {
-			margin-bottom: 0;
-		}
+	button, input[type=button] {
+		font: 800 16px/1.4 'Avenir Next W01', Helvetica, Arial, sans-serif;
+	}
+
+	h1, h2, h3, h4 {
+		font-weight: 300;
 	}
 
 	h2 {
