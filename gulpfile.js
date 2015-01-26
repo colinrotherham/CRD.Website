@@ -49,14 +49,18 @@
 			],
 
 			modules: [
+
+				// 3rd party via npm
 				'./node_modules/components-webfontloader/webfont.js',
 				'./node_modules/jquery/dist/jquery.js',
+
+				// Actual modules
 				'./app/public/assets/js/src/lib/*.js',
-				'./app/public/assets/js/src/partials/*.js',
-				'./app/public/assets/js/src/config.js'
+				'./app/public/assets/js/src/partials/*.js'
 			],
 
 			config: {
+				configFile: './app/public/assets/js/src/config.js',
 				findNestedDependencies: true
 			}
 		},
@@ -116,7 +120,7 @@
 
 			// RequireJS modules
 			gulp.src(options.requireJS.modules)
-				.pipe(amdOptimize('config', options.requireJS.config))
+				.pipe(amdOptimize('main', options.requireJS.config))
 			)
 
 			// Combine and uglify
