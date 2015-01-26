@@ -49,6 +49,7 @@
 			],
 
 			modules: [
+				'./node_modules/components-webfontloader/webfont.js',
 				'./node_modules/jquery/dist/jquery.js',
 				'./app/public/assets/js/src/lib/*.js',
 				'./app/public/assets/js/src/partials/*.js',
