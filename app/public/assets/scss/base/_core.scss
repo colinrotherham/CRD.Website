@@ -22,6 +22,7 @@
 	body {
 		background: rgb(167, 7, 53);
 		background: linear-gradient(50deg, map-get($colours, "red") 0%, map-get($colours, "red-lighter") 100%);
+		color: white;
 		text-size-adjust: 100%;
 	}
 
@@ -31,4 +32,9 @@
 
 	*, *:before, *:after {
 		box-sizing: inherit;
+	}
+
+	a {
+		color: white;
+		text-decoration: none;
 	}
