@@ -6,7 +6,7 @@
 
 		'use strict';
 
-		return function(href, before, media) {
+		return function(href, before, media, callback) {
 
 			'use strict';
 
@@ -17,6 +17,7 @@
 			ss.rel = 'stylesheet';
 			ss.href = href;
 			ss.media = 'only x';
+			ss.onload = callback || function() {};
 
 			ref.parentNode.insertBefore(ss, ref);
 
