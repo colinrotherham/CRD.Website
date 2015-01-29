@@ -1,0 +1,19 @@
+/*
+	Utility classes
+	----------------------------------- */
+
+	// Hide until fonts available
+	.require-fonts {
+		display: block;
+		transition: opacity 300ms ease-in-out;
+
+		// Hide with JS enabled
+		.advanced & {
+			opacity: 0;
+		}
+
+		// Show when fonts are loaded
+		.wf-active & {
+			opacity: 1;
+		}
+	}
