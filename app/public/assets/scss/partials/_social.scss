@@ -1,0 +1,12 @@
+/*
+	Social
+	----------------------------------- */
+
+	.social {
+		position: absolute;
+		bottom: 0;
+
+		@media #{map-get($breakpoints, "desktop")} {
+
+		}
+	}
