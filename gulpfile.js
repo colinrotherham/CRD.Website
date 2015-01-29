@@ -79,11 +79,14 @@
 		},
 
 		browserSync: {
-			proxy: 'localhost:4000'
+			proxy: 'localhost:4000',
+			notify: false
 		},
 
 		nodemon: {
-			script: 'app/app.js', ext: 'js hbs css'
+			script: 'app/app.js',
+			ext: 'js hbs css',
+			ignore: ['gulpfile.js', 'app/public/**.js']
 		}
 	};
 
