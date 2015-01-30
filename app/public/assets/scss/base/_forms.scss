@@ -2,6 +2,24 @@
 	Form styles
 	----------------------------------- */
 
+	button, .button {
+		$font-size: 17.53;
+
+		height: (37/$font-size) * 1em;
+		margin: 0;
+		padding: 0 (28/$font-size) * 1em;
+
+		background: white;
+		border: none;
+		border-radius: 4px;
+		box-shadow: 3px 3px 0 0 rgba(map-get($colours, "red-darker"), 0.2);
+
+		font-size: ($font-size/16) * 1em;
+		color: map-get($colours, "red-dark");
+		text-transform: uppercase;
+		cursor: pointer;
+	}
+
 	button::-moz-focus-inner {
 		padding: 0;
 		border: 0;

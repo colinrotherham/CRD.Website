@@ -3,8 +3,56 @@
 	----------------------------------- */
 
 	.intro {
+		position: relative;
+		margin-right: -20px;
+		padding-top: 150px;
 
-		@media #{map-get($breakpoints, "desktop")} {
+		h1 {
+			$font-size: 23.58;
+			$line-height: 28.9;
 
+			margin-bottom: 1em;
+
+			font-size: ($font-size/16) * 1em;
+			line-height: ($line-height/$font-size) * 1em;
+			letter-spacing: (0.2/$font-size) * -1em;
+
+			.quote {
+				position: absolute;
+				margin-top: 9px;
+
+				color: map-get($colours, "red-light");
+				font-size: (47.15/$font-size) * 1em;
+
+				&:first-of-type {
+					margin-left: -16px;
+				}
+
+				&:last-of-type {
+					margin-left: 2px;
+				}
+			}
+		}
+
+		&:after {
+			position: absolute;
+			z-index: -1;
+			top: 10px;
+			left: -420px;
+
+			display: block;
+			width: 620px;
+			height: 580px;
+
+			background: url(/assets/img/logo-background-small.png) no-repeat;
+			background-image: linear-gradient(transparent, transparent), url(/assets/img/logo-background-small.svg);
+			background-size: 620px 580px;
+
+			content: '';
+		}
+
+		@media #{map-get($breakpoints, "large-mobile")} {
+			margin: 0 auto;
+			max-width: 308px;
 		}
 	}

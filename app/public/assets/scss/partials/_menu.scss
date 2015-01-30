@@ -4,6 +4,27 @@
 
 	.menu {
 
+		&__toggle {
+			position: relative;
+			left: -40px;
+
+			padding: 8px 0 8px 40px;
+
+			background: url(/assets/img/menu.png) no-repeat 0 50%;
+			background-image: linear-gradient(transparent, transparent), url(/assets/img/menu.svg);
+			background-size: 25px 23px;
+			box-shadow: none;
+			border: none;
+
+			font-size: (17.33/16) * 1em;
+			color: white;
+			text-transform: uppercase;
+		}
+
+		&__list {
+			display: none;
+		}
+
 		@media #{map-get($breakpoints, "desktop")} {
 
 		}

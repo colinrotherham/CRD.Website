@@ -11,7 +11,7 @@
 	}
 
 	h1, h2, h3, h4 {
-		font-weight: 300;
+		font-weight: 100;
 	}
 
 	h2 {
@@ -22,14 +22,12 @@
 
 		font-family: 'Adelle W01 SemiBold', Georgia, serif;
 		font-weight: normal;
-		font-size: 18px;
-		font-size: 1.125rem;
+		font-size: (18/16) * 1em;
 	}
 
 	p {
 		margin: 0;
-		font-size: 14px;
-		font-size: 0.875rem;
+		font-size: 1em;
 	}
 
 	a {
@@ -37,7 +35,7 @@
 
 		&:hover,
 		&:focus {
-			background: rgba(154, 174, 183, 0.2);
+			background-color: rgba(154, 174, 183, 0.2);
 			text-decoration: underline;
 			transition-duration: 300ms;
 		}

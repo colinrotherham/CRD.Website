@@ -4,7 +4,49 @@
 
 	.social {
 		position: absolute;
-		bottom: 0;
+		bottom: 36px;
+		left: 36px;
+
+		&__icon {
+			display: inline-block;
+			width: 34px;
+			height: 32px;
+
+			vertical-align: middle;
+			background-repeat: no-repeat;
+			background-position: 50% 50%;
+			background-size: 30px 25px;
+			opacity: 0.5;
+			text-indent: -10000px;
+			transition: opacity 100ms;
+
+			& + & {
+				margin-left: 20px;
+			}
+
+			&:hover,
+			&:focus {
+				background-color: transparent;
+				opacity: 1;
+			}
+
+			&--twitter {
+				background-image: url(/assets/img/twitter.png) no-repeat;
+				background-image: linear-gradient(transparent, transparent), url(/assets/img/twitter.svg);
+			}
+
+			&--github {
+				background-image: url(/assets/img/github.png);
+				background-image: linear-gradient(transparent, transparent), url(/assets/img/github.svg);
+				background-size: 31px 30px;
+			}
+
+			&--dribbble {
+				background-image: url(/assets/img/dribbble.png);
+				background-image: linear-gradient(transparent, transparent), url(/assets/img/dribbble.svg);
+				background-size: 30px 30px;
+			}
+		}
 
 		@media #{map-get($breakpoints, "desktop")} {
 

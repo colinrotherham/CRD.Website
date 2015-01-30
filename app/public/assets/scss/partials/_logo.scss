@@ -4,19 +4,22 @@
 
 	.logo {
 		position: absolute;
-		left: 50%;
-		top: 50%;
+		right: 20px;
+		top: 20px;
 
 		width: 142px;
 		height: 38px;
 
-		margin: -71px 0 0 -19px;
-
 		background: url(/assets/img/logo-small.png) no-repeat;
 		background-image: linear-gradient(transparent, transparent), url(/assets/img/logo-small.svg);
+
 		text-indent: -10000px;
+		letter-spacing: 1px;
 
 		@media #{map-get($breakpoints, "desktop")} {
+			left: 50%;
+			top: 50%;
+
 			width: 314px;
 			height: 126px;
 
