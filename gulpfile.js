@@ -80,6 +80,7 @@
 
 		browserSync: {
 			proxy: 'localhost:4000',
+			browser: 'google chrome',
 			notify: false
 		},
 
