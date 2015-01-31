@@ -7,6 +7,7 @@
 		right: 20px;
 		top: 20px;
 
+		display: block;
 		width: 142px;
 		height: 38px;
 
@@ -15,6 +16,11 @@
 
 		text-indent: -10000px;
 		letter-spacing: 1px;
+
+		&, &:hover, &:focus {
+			text-decoration: none;
+			background-color: transparent;
+		}
 
 		@media #{map-get($breakpoints, "desktop")} {
 			left: 50%;
