@@ -19,6 +19,11 @@
 			font-size: (17.33/16) * 1em;
 			color: white;
 			text-transform: uppercase;
+
+			&, &:hover, &:focus {
+				transform: none;
+				box-shadow: none;
+			}
 		}
 
 		&__list {
