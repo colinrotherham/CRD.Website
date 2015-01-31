@@ -23,15 +23,19 @@
 		}
 
 		@media #{map-get($breakpoints, "desktop")} {
-			left: 50%;
-			top: 50%;
 
-			width: 314px;
-			height: 126px;
+			// When on home page
+			.page--home & {
+				left: 50%;
+				top: 50%;
 
-			margin: -63px 0 0 -157px;
+				width: 314px;
+				height: 126px;
 
-			background: url(/assets/img/logo.png) no-repeat;
-			background-image: linear-gradient(transparent, transparent), url(/assets/img/logo.svg);
+				margin: -63px 0 0 -157px;
+
+				background: url(/assets/img/logo.png) no-repeat;
+				background-image: linear-gradient(transparent, transparent), url(/assets/img/logo.svg);
+			}
 		}
 	}
