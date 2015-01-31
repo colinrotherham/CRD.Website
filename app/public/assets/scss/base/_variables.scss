@@ -13,6 +13,7 @@
 	$breakpoints: (
 
 		// Mobile first
+		"mobile": "(min-width: 320px)",
 		"large-mobile": "(min-width: 380px)",
 		"phablet": "(min-width: 480px)",
 		"small-tablet": "(min-width: 580px)",

@@ -3,9 +3,8 @@
 	----------------------------------- */
 
 	.social {
-		position: absolute;
-		bottom: 36px;
-		left: 36px;
+		min-width: 320px;
+		margin-left: -3px;
 
 		&__icon {
 			display: inline-block;
@@ -29,7 +28,7 @@
 				}
 
 				&--twitter {
-					background-image: url(/assets/img/twitter.png) no-repeat;
+					background-image: url(/assets/img/twitter.png);
 					background-image: linear-gradient(transparent, transparent), url(/assets/img/twitter.svg);
 				}
 
@@ -57,7 +56,9 @@
 			}
 		}
 
-		@media #{map-get($breakpoints, "desktop")} {
-
+		@media (min-height: 368px) {
+			position: absolute;
+			bottom: 36px;
+			left: 36px;
 		}
 	}

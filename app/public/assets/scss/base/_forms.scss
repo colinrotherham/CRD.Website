@@ -19,8 +19,8 @@
 		text-transform: uppercase;
 		cursor: pointer;
 
-		transition: 100ms, 200ms, 200ms;
-		transition-property: opacity, transform, box-shadow;
+		transition: 100ms, 200ms;
+		transition-property: opacity, transform, box-shadow, left;
 		transition-timing-function: cubic-bezier(0.55, 0, 0.1, 1);
 
 		&:hover,

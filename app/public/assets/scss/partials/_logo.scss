@@ -1,10 +1,10 @@
 /*
-	Header
+	Logo
 	----------------------------------- */
 
 	.logo {
 		position: absolute;
-		right: 20px;
+		left: 158px;
 		top: 20px;
 
 		display: block;
@@ -20,6 +20,11 @@
 		&, &:hover, &:focus {
 			text-decoration: none;
 			background-color: transparent;
+		}
+
+		@media #{map-get($breakpoints, "mobile")} {
+			left: auto;
+			right: 20px;
 		}
 
 		@media #{map-get($breakpoints, "desktop")} {

@@ -3,6 +3,14 @@
 	----------------------------------- */
 
 	.container {
+		height: 320px;
+		min-width: 320px;
+		min-height: 320px;
+
 		padding: 20px 36px;
 		color: white;
+
+		@media (min-height: 368px) {
+			height: 100%;
+		}
 	}
