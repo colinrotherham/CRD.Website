@@ -20,9 +20,8 @@
 	}
 
 	body {
-		background: rgb(167, 7, 53);
-		background: linear-gradient(50deg, map-get($colours, "red") 0%, map-get($colours, "red-lighter") 100%);
-		color: white;
+		background: white;
+		color: map-get($colours, "grey");
 		text-size-adjust: 100%;
 	}
 
