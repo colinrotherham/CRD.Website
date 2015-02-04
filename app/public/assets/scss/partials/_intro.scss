@@ -52,7 +52,7 @@
 			height: 580px;
 
 			background: url(/assets/img/logo-background-small.png) no-repeat;
-			background-image: linear-gradient(transparent, transparent), url(/assets/img/logo-background-small.svg);
+			background-image: linear-gradient(transparent, transparent), url('data:image/svg+xml;charset=US-ASCII,%3Csvg%20xmlns%3D%22http%3A//www.w3.org/2000/svg%22%20xmlns%3Axlink%3D%22http%3A//www.w3.org/1999/xlink%22%20version%3D%221.1%22%20id%3D%22Layer_1%22%20x%3D%220%22%20y%3D%220%22%20viewBox%3D%220%200%20620%20580%22%20enable-background%3D%22new%200%200%20620%20580%22%20xml%3Aspace%3D%22preserve%22%3E%0D%0A%3Cpath%20id%3D%22Background_3_%22%20opacity%3D%220.06%22%20fill%3D%22%23FFFFFF%22%20d%3D%22M310.4%200.3c-176.7%200-310%20111.4-310%20259.1%200%20279.2%20194.2%20320.9%20310%20320.9%20115.8%200%20310-41.7%20310-320.9C620.4%20111.6%20487.1%200.3%20310.4%200.3zM500.3%20478.1c-48.6%2044-115.7%2062.3-189.9%2062.3%20-74.5%200-141.9-18.5-190.5-62.9%20-48.2-44-78-113.4-78-215.6%200-122.4%20111-221.7%20268.5-221.7s268.5%2099.3%20268.5%20221.7C578.9%20364.5%20548.8%20434.2%20500.3%20478.1z%22/%3E%0D%0A%3C/svg%3E');
 			background-size: 620px 580px;
 
 			content: '';
