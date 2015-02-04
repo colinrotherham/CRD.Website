@@ -3,11 +3,13 @@
 	----------------------------------- */
 
 	.social {
+		display: block;
 		min-width: 320px;
 		margin-left: -3px;
 
 		&__icon {
-			display: inline-block;
+			display: block;
+			float: left;
 
 			vertical-align: middle;
 			opacity: 0.5;
