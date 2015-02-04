@@ -16,7 +16,7 @@
 		// Mobile first
 		"mobile": "(min-width: 320px)",
 		"large-mobile": "(min-width: 380px)",
-		"desktop": "(min-width: 1024px)",
+		"desktop": "(min-height: 368px) and (min-width: 1024px)",
 
 		// Retina images
 		"retina": "print, (-o-min-device-pixel-ratio: 3/2), (-webkit-min-device-pixel-ratio: 1.5), (min-resolution: 192dpi)"

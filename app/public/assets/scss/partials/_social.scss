@@ -8,9 +8,7 @@
 		margin-left: -3px;
 
 		&__icon {
-			display: block;
-			float: left;
-
+			display: inline-block;
 			vertical-align: middle;
 			opacity: 0.5;
 			text-indent: -10000px;
@@ -62,5 +60,15 @@
 			position: absolute;
 			bottom: 36px;
 			left: 36px;
+		}
+
+		@media #{map-get($breakpoints, "desktop")} {
+			left: auto;
+			right: 36px;
+			text-align: right;
+
+			&__icon {
+				text-indent: 10000px;
+			}
 		}
 	}
