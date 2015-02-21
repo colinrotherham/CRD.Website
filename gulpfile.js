@@ -6,7 +6,8 @@
 		sourcemaps = require('gulp-sourcemaps'),
 		sass = require('gulp-sass'),
 		uglify = require('gulp-uglifyjs'),
-		smushit = require('gulp-smushit'),
+		imagemin = require('gulp-imagemin'),
+		pngquant = require('imagemin-pngquant'),
 		watch = require('gulp-watch'),
 		filter = require('gulp-filter'),
 		prefix = require('gulp-autoprefixer'),
@@ -139,10 +140,13 @@
 	Optimise images
 	----------------------------------- */
 
-	gulp.task('smushit', function() {
+	gulp.task('imagemin', function () {
 
 		gulp.src('./app/public/assets/img/{,*/}*.{png,jpg,gif}')
-			.pipe(smushit())
+			.pipe(imagemin({
+				progressive: true,
+				use: [pngquant()]
+			}))
 			.pipe(gulp.dest('./app/public/assets/img'));
 	});
 
@@ -181,4 +185,4 @@
 	gulp.task('live', ['sass', 'uglify', 'serve']);
 
 	// Optimise images
-	gulp.task('images', ['smushit']);
+	gulp.task('images', ['imagemin']);
