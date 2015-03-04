@@ -90,7 +90,7 @@
 			.pipe(prefix(options.prefix))
 			.pipe(minifyCSS(options.minifyCSS))
 			.pipe(rename({ suffix: '.min' }))
-			.pipe(sourcemaps.write('.', { sourceRoot: '/assets/scss/' }))
+			.pipe(sourcemaps.write('.', { sourceRoot: '/assets/scss/', sourceMappingURLPrefix: '/assets/css/' }))
 			.pipe(gulp.dest('./app/public/assets/css'))
 			.pipe(filter('**/*.css'))
 			.pipe(browserSync.reload({ stream: true }));
