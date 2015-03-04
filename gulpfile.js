@@ -30,7 +30,7 @@
 		},
 
 		prefix: {
-			browsers: ['> 2%', 'IE 8'],
+			browsers: ['> 2%', 'IE 9', 'IE 10'],
 			cascade: false,
 			remove: true
 		},
