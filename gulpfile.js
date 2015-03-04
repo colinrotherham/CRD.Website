@@ -39,10 +39,6 @@
 			keepSpecialComments: false
 		},
 
-		rename: {
-			suffix: '.min'
-		},
-
 		requireJS: {
 
 			dependencies: [
@@ -104,8 +100,8 @@
 			.pipe(sass(options.sass))
 			.pipe(prefix(options.prefix))
 			.pipe(minifyCSS(options.minifyCSS))
-			.pipe(rename(options.rename))
-			.pipe(sourcemaps.write('.'))
+			.pipe(rename({ suffix: '.min' }))
+			.pipe(sourcemaps.write('.', { sourceRoot: '/assets/scss/' }))
 			.pipe(gulp.dest('./app/public/assets/css'))
 			.pipe(browserSync.reload({ stream: true }));
 	});
