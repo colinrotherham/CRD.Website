@@ -5,7 +5,8 @@
 	var gulp = require('gulp'),
 		sourcemaps = require('gulp-sourcemaps'),
 		sass = require('gulp-sass'),
-		uglify = require('gulp-uglifyjs'),
+		uglify = require('gulp-uglify'),
+		concat = require('gulp-concat'),
 		imagemin = require('gulp-imagemin'),
 		pngquant = require('imagemin-pngquant'),
 		watch = require('gulp-watch'),
@@ -62,19 +63,6 @@
 			}
 		},
 
-		uglify: {
-
-			output: {
-				filename: 'base.min.js',
-				directory: './app/public/assets/js'
-			},
-
-			config: {
-				outSourceMap: true,
-				compress: false
-			}
-		},
-
 		browserSync: {
 			proxy: 'localhost:4000',
 			browser: 'google chrome',
@@ -123,14 +111,17 @@
 
 			// RequireJS modules
 			gulp.src(options.requireJS.modules)
+				.pipe(sourcemaps.init())
 				.pipe(amdOptimize('main', options.requireJS.config))
-			)
+				.pipe(sourcemaps.write()))
 
-			// Combine and uglify
-			.pipe(uglify(options.uglify.output.filename, options.uglify.config))
-			.pipe(gulp.dest(options.uglify.output.directory))
+			.pipe(sourcemaps.init({loadMaps: true}))
+			.pipe(uglify())
+			.pipe(concat('base.min.js'))
+			.pipe(sourcemaps.write('.'))
+			.pipe(gulp.dest('./app/public/assets/js'))
 			.pipe(filter('**/*.js'))
-			.pipe(browserSync.reload({ stream: true }));
+			.pipe(browserSync.reload({ stream: true }))
 	});
 
 
