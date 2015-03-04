@@ -175,11 +175,11 @@
 	----------------------------------- */
 
 	// Default
-	gulp.task('default', ['dev']);
+	gulp.task('default', ['sass', 'uglify']);
 
 	// Development and Live tasks
-	gulp.task('dev', ['sass', 'uglify', 'browser-sync', 'serve']);
-	gulp.task('live', ['sass', 'uglify', 'serve']);
+	gulp.task('dev', ['default', 'browser-sync', 'serve']);
+	gulp.task('live', ['default', 'serve']);
 
 	// Optimise images
 	gulp.task('images', ['imagemin']);
