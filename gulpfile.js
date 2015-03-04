@@ -83,8 +83,9 @@
 
 		nodemon: {
 			script: 'app/app.js',
+			watch: 'app/',
 			ext: 'js hbs css',
-			ignore: ['gulpfile.js', 'app/public/**.js']
+			ignore: ['app/public/**']
 		}
 	};
 
