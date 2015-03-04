@@ -104,6 +104,7 @@
 			.pipe(rename({ suffix: '.min' }))
 			.pipe(sourcemaps.write('.', { sourceRoot: '/assets/scss/' }))
 			.pipe(gulp.dest('./app/public/assets/css'))
+			.pipe(filter('**/*.css'))
 			.pipe(browserSync.reload({ stream: true }));
 	});
 
