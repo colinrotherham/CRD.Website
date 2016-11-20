@@ -3,7 +3,7 @@
   "name": "@colinrotherham/website",
   "description": "Website for Colin Rotherham Design Ltd.",
   "repository": "https://github.com/colinrotherham/CRD.Website",
-  "version": "0.2.1",
+  "version": "0.3.0",
   "dependencies": {
     "async": "^2.1.0",
     "express": "^4.14.0",

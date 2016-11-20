@@ -124,13 +124,13 @@
 		left: 50%;
 		top: 50%;
 
-		width: 270px;
-		height: 122px;
+		width: 290px;
+		height: 108px;
 
-		margin: -71px 0 0 -135px;
+		margin: -64px 0 0 -145px;
 
-		background: url('/assets/img/logo.png') no-repeat;
-		background: rgba(0, 0, 0, 0) url('/assets/img/logo.svg') no-repeat;
+		background: url('/assets/img/logo.png?v2') no-repeat;
+		background: rgba(0, 0, 0, 0) url('/assets/img/logo.svg?v2') no-repeat;
 		text-indent: -10000px;
 	}
 
@@ -138,12 +138,12 @@
 	{
 		h1
 		{
-			width: 202.5px;
-			height: 91.5px;
+			width: 217.5px;
+			height: 81px;
 
-			margin: -51px 0 0 -101.25px;
+			margin: -48px 0 0 -108.75px;
 
-			background-size: 202.5px 274.5px;
+			background-size: 217px 81px;
 		}
 	}
 
@@ -151,12 +151,12 @@
 	{
 		h1
 		{
-			width: 270px;
-			height: 122px;
+			width: 290px;
+			height: 108px;
 
-			margin: -71px 0 0 -135px;
+			margin: -64px 0 0 -145px;
 
-			background-size: 270px 366px;
+			background-size: 290px 108px;
 		}
 	}
 
@@ -164,7 +164,7 @@
 	{
 		h1
 		{
-			margin-top: -61px;
+			margin-top: -54px;
 		}
 
 		.transitions #nav:hover + #container h1
