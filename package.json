@@ -3,23 +3,23 @@
   "name": "@colinrotherham/website",
   "description": "Website for Colin Rotherham Design Ltd.",
   "repository": "https://github.com/colinrotherham/CRD.Website",
-  "version": "0.2.0",
+  "version": "0.2.1",
   "dependencies": {
-    "async": "*",
-    "express": "*",
-    "express-handlebars": "*",
-    "forever": "*"
+    "async": "^2.1.0",
+    "express": "^4.14.0",
+    "express-handlebars": "^3.0.0",
+    "forever": "^0.15.0"
   },
   "devDependencies": {
-    "grunt": "*",
-    "grunt-browser-sync": "*",
-    "grunt-contrib-watch": "*",
-    "grunt-contrib-uglify": "*",
-    "grunt-contrib-sass": "*",
-    "grunt-smushit": "*",
-    "matchdep": "*"
+    "grunt": "^1.0.0",
+    "grunt-browser-sync": "^2.2.0",
+    "grunt-contrib-watch": "^1.0.0",
+    "grunt-contrib-uglify": "^2.0.0",
+    "grunt-contrib-sass": "^1.0.0",
+    "grunt-smushit": "^2.1.0",
+    "matchdep": "^1.0.0"
   },
-  "engine": "node >=0.6.x",
+  "engines": "node >=5.6.0",
   "scripts": {
     "start": "forever app/app.js",
     "start-dev": "forever app/app.js & grunt dev"
