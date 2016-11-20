@@ -1,6 +1,6 @@
 {
   "author": "Colin Rotherham Design Ltd.",
-  "name": "CRD.Website",
+  "name": "@colinrotherham/website",
   "description": "Website for Colin Rotherham Design Ltd.",
   "repository": "https://github.com/colinrotherham/CRD.Website",
   "version": "0.2.0",
